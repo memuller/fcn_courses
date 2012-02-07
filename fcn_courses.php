@@ -32,16 +32,15 @@
 	# Sets base plugin path. With backslashes.
 	$plugin_path = plugin_dir_path(__FILE__) ;
 
-	# Requires vendored libs.
+	# Requires vendored libs and base structure.
 	require_once 'vendors/haml/HamlParser.class.php' ;
 	require_once 'vendors/jw_custom_posts/jw_custom_posts.php' ;
-	
-	# Requires base Presenter structure.
 	require_once 'lib/Presenter.php' ;
 
-	# Requires base models.
+	# Requires models and presenters.
 	require_once 'models/Course.php' ; FCN\Course::build() ; 
 	require_once 'models/Person.php' ;
+	require_once 'presenters/WaitingList.php' ;
 
 	function fcn_courses_enforce_db(){
 		global $fcn_courses_db_version ;
@@ -51,6 +50,15 @@
 		}
 	}
 
+	function fcn_show_forms($content){
+		global $post ;  
+		if($post->post_type == 'courses'){
+			$content .= FCN\WaitingListPresenter::index() ; 
+		}
+		return $content ; 
+	}
+
+	add_filter('the_content', 'fcn_show_forms') ;
 	add_action('plugins_loaded', 'fcn_courses_enforce_db') ;
 
 
