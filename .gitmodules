@@ -1,0 +1,3 @@
+[submodule "vendors/jw_custom_posts"]
+	path = vendors/jw_custom_posts
+	url = git://github.com/JeffreyWay/Easy-WordPress-Custom-Post-Types.git
