@@ -26,6 +26,9 @@
 	Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 	*/
 
+	# Sets db version.
+	$fcn_courses_db_version = '0.1' ;
+
 	# Sets base plugin path. With backslashes.
 	$plugin_path = plugin_dir_path(__FILE__) ;
 
@@ -37,9 +40,18 @@
 	require_once 'lib/Presenter.php' ;
 
 	# Requires base models.
-	require_once 'models/Course.php' ;
-	FCN\Course::build() ; 
+	require_once 'models/Course.php' ; FCN\Course::build() ; 
+	require_once 'models/Person.php' ;
 
+	function fcn_courses_enforce_db(){
+		global $fcn_courses_db_version ;
+		if(get_option('fcn_courses_db_version') != $fcn_courses_db_version){
+			FCN\Person::build_database() ;
+			update_option('fcn_courses_db_version', $fcn_courses_db_version) ; 
+		}
+	}
+
+	add_action('plugins_loaded', 'fcn_courses_enforce_db') ;
 
 
 ?>
