@@ -1,9 +1,9 @@
 <?php 
 	/*
-	Plugin Name: Houdini
+	Plugin Name: FCN Courses Manager
 	Version: 0.0.1
-	Plugin URI: http://github.com/memuller/houdini
-	Description: Escapes undesired code anywhere.
+	Plugin URI: http://github.com/memuller/fcn_courses
+	Description: Manages inscriptions, classes and waiting lists for Faculdade Canção Nova courses.
 	Author: Matheus Muller
 	Author URI: http://memuller.com
 	*/
@@ -29,22 +29,5 @@
 
 	$plugin_path = plugin_dir_path(__FILE__) ;
 
-	require 'vendors/htmlpurifier/library/HTMLPurifier.standalone.php' ;
-	require 'vendors/haml/HamlParser.class.php' ;
-	require 'models/Escape.php' ;
-	require 'lib/Presenter.php' ;
-	require 'presenters/Options.php' ;
-
-	add_filter('title_save_pre', array('Houdini\Escape', 'common')) ;
-	add_filter('content_save_pre', array('Houdini\Escape', 'common'));
-	add_filter('excerpt_save_pre', array('Houdini\Escape', 'common')) ;
-	add_filter('the_title', array('Houdini\Escape', 'common')) ;
-	add_filter('the_content', array('Houdini\Escape', 'common')) ;
-	add_filter('the_author', array('Houdini\Escape', 'common')) ;
-
-	function houdini_options_menu(){
-		add_submenu_page( 'options-general.php', 'Houdini Settings', 'Houdini', 'edit_posts', 'houdini', 'Houdini\OptionsPresenter::present'  );
-	}
-	add_action( 'admin_menu', 'houdini_options_menu' ) ;
 
 ?>
