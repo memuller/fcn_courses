@@ -36,6 +36,9 @@
 	# Requires base Presenter structure.
 	require_once 'lib/Presenter.php' ;
 
+	# Requires base models.
+	require_once 'models/Course.php' ;
+	FCN\Course::build() ; 
 
 
 
