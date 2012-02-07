@@ -26,8 +26,17 @@
 	Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 	*/
 
-
+	# Sets base plugin path. With backslashes.
 	$plugin_path = plugin_dir_path(__FILE__) ;
+
+	# Requires vendored libs.
+	require_once 'vendors/haml/HamlParser.class.php' ;
+	require_once 'vendors/jw_custom_posts/jw_custom_posts.php' ;
+	
+	# Requires base Presenter structure.
+	require_once 'lib/Presenter.php' ;
+
+
 
 
 ?>
