@@ -15,6 +15,7 @@
 		static $belongs_to ;
 		static $has_many ; 
 
+		private $creation_parameters ;
 		public $name, $email, $phone, $id, $registered_in ; 
 
 		static function get_table_name(){
@@ -22,6 +23,21 @@
 			if(!isset(static::$table_name)){
 				static::$table_name = $wpdb->prefix . static::$table_sufix ;
 			}
+		}
+
+		static function unique_field(){
+			$field = "id";
+			foreach (static::$fields as $field_name => $field_options) {
+				if(isset($field_options['unique'])){
+					$field = $field_name ; break ;
+				}
+			}
+			return $field ;
+		}
+
+		static function unique_field_where_clausule(){
+			$field = static::unique_field();
+			return  $field == 'id' ? $clausule = "id = %d" : $clausule = "$field = %s" ; 
 		}
 
 		static function build_database(){
@@ -60,27 +76,54 @@
 			 		
 		}
 
-		function __construct($values, $save = true){			 
-			
-			global $wpdb ; static::get_table_name();
+		function __construct($values, $save = true){
+			$this->creation_parameters = $values ; 			 
 			if($save === true){
-				$fields = array();
+				$this->persist();
+			} else {
+				foreach ($this->creation_parameters as $k => $v) {
+					$this->$k = $v ; 			
+				}		
+			}
+		}
 
-				foreach (static::$fields as $field_name => $field_options) {
-					
-					if(isset($field_options['mechanized'])){
-						$values[$field_name] =  call_user_func($field_options['mechanized'][0], $field_options['mechanized'][1]);
-					}
+		static public function find_or_create($args){
+			global $wpdb ; static::get_table_name();
+			$clausule = static::unique_field_where_clausule() ;
+			if( is_array($args)){
+				$param = $args[static::unique_field()] ;
+			} else {
+				$param = $args ; 
+			}
+			$sql = $wpdb->prepare(
+				"select * from ".static::$table_name." where $clausule", $param) ;
+			$obj = $wpdb->get_row($sql, ARRAY_A) ;
+			
+			if($obj){
+				return new static($obj, false) ;
+			} else {
+				return new static($args) ;
+			}
+		}
 
-					$fields[$field_name] = $values[$field_name] ; $this->$field_name = $values[$field_name] ;
+		public function persist(){
+			global $wpdb ; static::get_table_name() ; 
+			$fields = array();
+
+			foreach (static::$fields as $field_name => $field_options) {
+				
+				if(isset($field_options['mechanized'])){
+					$this->creation_parameters[$field_name] =  call_user_func($field_options['mechanized'][0], $field_options['mechanized'][1]);
 				}
-
+				$value = isset($this->$field_name) ? $this->$field_name : $this->creation_parameters[$field_name] ; 
+				$fields[$field_name] =  $value; 
+				$this->$field_name = $value ;
+			}
+			if(! isset($this->id)){
 				$wpdb->insert(static::$table_name, $fields) ;
 				$this->id = $wpdb->insert_id ; 
 			} else {
-				foreach ($values as $k => $v) {
-					$this->$k = $v ; 			
-				}		
+				$wpdb->update(static::$table_name, $fields, array('id' => $this->id)) ;
 			}
 		}
 		
