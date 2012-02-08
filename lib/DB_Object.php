@@ -1,5 +1,4 @@
 <?php 
-	namespace FCN\Base ;
 
 	class DB_Object {
 

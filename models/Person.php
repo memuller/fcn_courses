@@ -1,6 +1,6 @@
 <?php 
 	namespace FCN ;
-	use FCN\Base\DB_Object ;
+	use DB_Object ;
 	class Person extends DB_Object {
 
 		static $table_sufix = 'fcn_people' ;
