@@ -36,6 +36,7 @@
 	require_once 'vendors/haml/HamlParser.class.php' ;
 	require_once 'vendors/jw_custom_posts/jw_custom_posts.php' ;
 	require_once 'lib/Presenter.php' ;
+	require_once 'lib/DB_Object.php' ;
 
 	# Requires models and presenters.
 	require_once 'models/Course.php' ; FCN\Course::build() ; 
