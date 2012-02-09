@@ -12,7 +12,7 @@
 			'opted_in' => array('required' => true, 'type' => 'datetime', 'mechanized' => array('date', 'Y-m-d H:i:s'))
 		) ;
 
-		static $belongs_to = 'person' ;
+		static $belongs_to = 'person' ; 
 		public $name, $email, $phone, $id, $registered_in, $active, $opted_in, $course_id ; 
 		
 	}

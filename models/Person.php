@@ -11,6 +11,8 @@
 			'phone' => array('size' => 50), 
 			'registered_in' => array('required' => true, 'type' => 'datetime', 'mechanized' => array('date', 'Y-m-d H:i:s'))
 		) ;
+
+		static $has_many = 'waitee' ;
 		public $name, $email, $phone, $id, $registered_in ; 
 		
 	}
