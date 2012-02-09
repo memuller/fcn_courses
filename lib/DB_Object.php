@@ -175,6 +175,11 @@
 				}
 				$value = isset($this->$field_name) ? $this->$field_name : $this->creation_parameters[$field_name] ; 
 				$value = !isset($value) ? $field_options['default'] : $value ; 
+
+				if(empty($value) && $field_options['required']){
+					trigger_error("$field_name is required.", E_USER_ERROR) ;
+				}
+
 				$fields[$field_name] =  $value; 
 				$this->$field_name = $value ;
 			}
