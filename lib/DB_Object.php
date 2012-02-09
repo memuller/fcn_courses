@@ -51,8 +51,10 @@
 					$field_type = $field_options['type'] ;
 				}
 
+				$default = isset($field_options['default']) ? "default ".$field_options['default'] : "" ;
+
 				$required = $field_options['required'] ? "not null" : "null" ;
-				$field_definitions[]= "$field_name $field_type $required" ;
+				$field_definitions[]= "$field_name $field_type $default $required" ;
 
 				if($field_options['unique']){
 					$key_definitions[]= "unique key $field_name ($field_name)" ; 
