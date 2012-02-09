@@ -9,6 +9,7 @@
 		static $belongs_to ;
 		static $has_many ; 
 
+		public $new_record ; 
 		private $creation_parameters ;
 		
 		static function get_class_name(){
@@ -102,7 +103,8 @@
 			} else {
 				foreach ($this->creation_parameters as $k => $v) {
 					$this->$k = $v ; 			
-				}		
+				}
+				$this->new_record = false ; 
 			}
 		}
 
@@ -167,7 +169,6 @@
 				}
 
 			}
-
 			foreach (static::$fields as $field_name => $field_options) {
 				
 				if(isset($field_options['mechanized'])){
@@ -185,9 +186,11 @@
 			}
 
 			if(! isset($this->id)){
+				$this->new_record = true ; 
 				$result = $wpdb->insert(static::table_name(), $fields) ;
 				$this->id = $wpdb->insert_id ; 
 			} else {
+				$this->new_record = false ;
 				$wpdb->update(static::table_name(), $fields, array('id' => $this->id)) ;
 			}
 		}
