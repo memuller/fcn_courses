@@ -28,7 +28,29 @@
 			)
 		) ;
 
+		public $post ; 
+
+		function __get($name){
+			global $post ; 
+			return $post->$name ; 
+		}
+
+		function __construct($args=array()){
+			
+		}
+
+		function waitees(){
+			global $wpdb ;
+			$waitee_table = Waitee::table_name() ; $person_table = Person::table_name();
+			$sql = $wpdb->prepare("SELECT * from $waitee_table, $person_table 
+				WHERE $person_table.id = $waitee_table.person_id 
+				AND $waitee_table.course_id = %d ;", $this->ID
+			);
+			return $wpdb->get_results($sql) ;
+		}
+
 		static function create_post_type(){
+
 			register_post_type( self::$name, self::$creation_fields ) ;
 		}
 
