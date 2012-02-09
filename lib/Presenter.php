@@ -18,6 +18,12 @@
 			echo self::render_to_string($view, $scope) ;
 		}
 
+		static function render_partial($partial, $scope=array()){
+			$exploded_path = explode('/',$partial) ;
+			$exploded_path[sizeof($exploded_path)-1] = "_".$exploded_path[sizeof($exploded_path)-1] ;
+			$partial = implode('/', $exploded_path) ;
+			return self::render_to_string($partial, $scope) ;
+		}
 		static function render_admin($view, $scope=array()){
 			echo self::render_to_string('admin/'. $view, $scope) ;
 		}
