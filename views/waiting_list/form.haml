@@ -1,6 +1,5 @@
 #waitee
-  %h1 Waiting list
-  
+  %h1 Waiting List
   - if($success)
     = Presenter::render_partial('waiting_list/success', array('waitee' => $waitee))
   
@@ -20,6 +19,7 @@
       %input{:name => 'waitee[person_phone]', :type => 'text'}
     
     %input{:value => 'Sign up', :type => 'submit'}
+
     %input{:name => 'waitee[active]', :value => 1, :type => 'hidden'}
     %input{:name => 'action', :value => 'waitee_signup', :type => 'hidden'}
     %input{:name => 'waitee[course_id]', :value => $post->ID, :type => 'hidden' }

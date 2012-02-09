@@ -43,6 +43,7 @@
 	require_once 'models/Person.php' ;
 	require_once 'models/Waitee.php' ;
 	require_once 'presenters/WaitingList.php' ;
+	require_once 'presenters/CourseAdmin.php' ; FCN\CourseAdminPresenter::build() ;
 
 	function fcn_courses_enforce_db(){
 		global $fcn_courses_db_version ;
@@ -60,6 +61,8 @@
 		}
 		return $content ; 
 	}
+
+
 
 	add_filter('the_content', 'fcn_show_forms') ;
 	add_action('plugins_loaded', 'fcn_courses_enforce_db') ;
