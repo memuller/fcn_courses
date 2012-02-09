@@ -1,4 +1,26 @@
-%h1 Waiting list
-- $waitee = FCN\Waitee::find_or_create( array('person_email' => 'lal1a@gmail.com', 'person_name' => 'gueres', 'course_id' => '1'))
-
-%br
+#waitee
+  %h1 Waiting list
+  
+  - if($success)
+    = Presenter::render_partial('waiting_list/success', array('waitee' => $waitee))
+  
+  - if(isset($success) && ! $success)
+    = Presenter::render_partial('waiting_list/failure') ;
+  
+  %p There are no classes open for this course right now, but you can sign up here to be notified when a class opens.
+  %form{:name => 'waitee_signup', :action => '', :method => 'POST'}
+    .field
+      %label{:for => 'waitee[person_name]'} Name *
+      %input{:name => 'waitee[person_name]', :type => 'text'}
+    .field
+      %label{:for => 'waitee[person_email]'} Email *
+      %input{:name => 'waitee[person_email]', :type => 'text'}
+    .field
+      %label{:for => 'waitee[person_phone]'} Phone
+      %input{:name => 'waitee[person_phone]', :type => 'text'}
+    
+    %input{:value => 'Sign up', :type => 'submit'}
+    %input{:name => 'waitee[active]', :value => 1, :type => 'hidden'}
+    %input{:name => 'action', :value => 'waitee_signup', :type => 'hidden'}
+    %input{:name => 'waitee[course_id]', :value => $post->ID, :type => 'hidden' }
+    %input{:name => 'nonce', :value => wp_create_nonce('waitee_signup'), :type => 'hidden'}
