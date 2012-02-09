@@ -1,9 +1,10 @@
 <?php 
 	namespace FCN ;
 	use DB_Object ;
+
 	class Waitee extends DB_Object {
 
-		static $table_sufix = 'fcn_waitee' ;
+		static $table_sufix = 'fcn_waitees' ;
 
 		static $fields = array(
 			'active' => array('required' => true,  'type' => 'boolean', 'default' => 1) ,
