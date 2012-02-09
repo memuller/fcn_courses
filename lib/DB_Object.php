@@ -42,6 +42,10 @@
 			$key_definitions = array() ;
 			$key_definitions[] = "primary key id (id)" ;
 
+			if (isset(static::$belongs_to)) {
+				$field_definitions[]= static::$belongs_to."_id bigint(20) unsigned not null" ;
+			}
+			
 			foreach (static::$fields as $field_name => $field_options) {
 				if( !isset($field_options['size'])) $field_options['size'] = 255 ;
 				
