@@ -17,7 +17,7 @@
 		);
 
 		static $belongs_to = 'person' ; 
-		public $name, $email, $phone, $id, $registered_in, $active, $opted_in, $course_id ; 
+		public $id, $active, $opted_in, $course_id ; 
 		
 	}
 
