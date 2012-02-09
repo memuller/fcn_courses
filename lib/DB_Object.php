@@ -12,11 +12,9 @@
 		private $creation_parameters ;
 		
 
-		static function get_table_name(){
+		static function table_name(){
 			global $wpdb ;
-			if(!isset(static::$table_name)){
-				static::$table_name = $wpdb->prefix . static::$table_sufix ;
-			}
+			return $wpdb->prefix . static::$table_sufix ;
 		}
 
 		static function unique_field(){
@@ -38,7 +36,6 @@
 			global $wpdb ;
 			
 			require_once ABSPATH . 'wp-admin/includes/upgrade.php' ;
-			static::get_table_name();
 
 			$field_definitions = array() ;
 			$field_definitions[]= "id bigint(20) unsigned not null auto_increment" ;
@@ -64,8 +61,8 @@
 			$sql = sprintf("CREATE TABLE %s (
 				%s ,
 				%s
-			);", self::$table_name, implode(","."\n", $field_definitions), implode(","."\n", $key_definitions)) ;
-
+			);", static::table_name(), implode(","."\n", $field_definitions), implode(","."\n", $key_definitions)) ;
+			print $sql ; 
 			dbDelta($sql) ;
 			 		
 		}
@@ -82,7 +79,7 @@
 		}
 
 		static public function find_or_create($args){
-			global $wpdb ; static::get_table_name();
+			global $wpdb ;
 			$clausule = static::unique_field_where_clausule() ;
 			if( is_array($args)){
 				$param = $args[static::unique_field()] ;
@@ -90,7 +87,7 @@
 				$param = $args ; 
 			}
 			$sql = $wpdb->prepare(
-				"select * from ".static::$table_name." where $clausule", $param) ;
+				"select * from ".static::table_name()." where $clausule", $param) ;
 			$obj = $wpdb->get_row($sql, ARRAY_A) ;
 			
 			if($obj){
@@ -101,7 +98,7 @@
 		}
 
 		public function persist(){
-			global $wpdb ; static::get_table_name() ; 
+			global $wpdb ;
 			$fields = array();
 
 			foreach (static::$fields as $field_name => $field_options) {
@@ -114,10 +111,10 @@
 				$this->$field_name = $value ;
 			}
 			if(! isset($this->id)){
-				$wpdb->insert(static::$table_name, $fields) ;
+				$wpdb->insert(static::table_name(), $fields) ;
 				$this->id = $wpdb->insert_id ; 
 			} else {
-				$wpdb->update(static::$table_name, $fields, array('id' => $this->id)) ;
+				$wpdb->update(static::table_name(), $fields, array('id' => $this->id)) ;
 			}
 		}
 		
