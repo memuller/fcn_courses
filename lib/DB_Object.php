@@ -1,5 +1,5 @@
 <?php 
-
+	
 	class DB_Object {
 
 		static $table_sufix ;
@@ -11,6 +11,9 @@
 
 		private $creation_parameters ;
 		
+		static function get_class_name(){
+			return get_called_class() ;
+		}
 
 		static function table_name(){
 			global $wpdb ;
