@@ -21,7 +21,13 @@
 		}
 
 		static function unique_field(){
+
+			if(isset(static::$compound_indexes)){
+				return static::$compound_indexes['unique'] ;
+			}
+
 			$field = "id";
+			
 			foreach (static::$fields as $field_name => $field_options) {
 				if(isset($field_options['unique'])){
 					$field = $field_name ; break ;
@@ -30,8 +36,22 @@
 			return $field ;
 		}
 
+		static function belongs_to_class_name(){
+			$splat = explode("\\", static::get_class_name()) ; $namespace = $splat[0] ;
+			return $namespace . "\\" .ucfirst(static::$belongs_to) ;
+		}
+
 		static function unique_field_where_clausule(){
+			
 			$field = static::unique_field();
+			if(is_array($field)){
+				$clausule = array(); ;
+				foreach ($field as $obj) {
+					$clausule[]= "$obj = %d" ; 
+				}
+				return implode(" AND ", $clausule) ;
+			}
+			
 			return  $field == 'id' ? $clausule = "id = %d" : $clausule = "$field = %s" ; 
 		}
 
@@ -71,13 +91,12 @@
 				%s ,
 				%s
 			);", static::table_name(), implode(","."\n", $field_definitions), implode(","."\n", $key_definitions)) ;
-			print $sql ; 
 			dbDelta($sql) ;
 			 		
 		}
 
 		function __construct($values, $save = true){
-			$this->creation_parameters = $values ; 			 
+			$this->creation_parameters = $values ; 		 
 			if($save === true){
 				$this->persist();
 			} else {
@@ -89,10 +108,24 @@
 
 		static public function find_or_create($args){
 			global $wpdb ;
-			if(isset(static::$belongs_to)) {
+			$clausule = static::unique_field_where_clausule() ;
 
+			if(isset(static::$belongs_to)) {
+				if(sizeof($args) == sizeof(static::unique_field())){
+					$param = $args ;
+				} else {
+					$param = array(); $key_class = static::belongs_to_class_name() ;
+					foreach (static::unique_field() as $field_name) {
+						if(strstr($field_name, static::$belongs_to)){
+							$inherited_field_name = static::$belongs_to . "_" . $key_class::unique_field() ;
+							$key = $key_class::find_or_create(array($key_class::unique_field() => $args[$inherited_field_name])) ;
+							$args[static::$belongs_to."_id"] = $key->id ;  
+						}
+						$param[$field_name]= $args[$field_name] ;
+					}
+				}
+				$sql = vsprintf("select * from ".static::table_name()." where $clausule", $param) ;
 			} else {
-				$clausule = static::unique_field_where_clausule() ;
 				if( is_array($args)){
 					$param = $args[static::unique_field()] ;
 				} else {
@@ -100,8 +133,9 @@
 				}
 				$sql = $wpdb->prepare(
 					"select * from ".static::table_name()." where $clausule", $param) ;
+			}	
 				$obj = $wpdb->get_row($sql, ARRAY_A) ;
-			}
+				
 			if($obj){
 				return new static($obj, false) ;
 			} else {
@@ -115,21 +149,21 @@
 
 			if(static::$belongs_to){
 				$key_class_fields = array() ;
-				$splat = explode("\\", static::get_class_name()) ; $namespace = $splat[0] ;
-				$key_class = $namespace . "\\" .ucfirst(static::$belongs_to) ;
+				$key_class = static::belongs_to_class_name() ;
+				$fk_field = static::$belongs_to."_id" ;
+				
+				if(!isset($this->$fk_field)){
 
-				foreach ( $key_class::$fields as $field_name => $field_options) {
-					$compound_field_name = static::$belongs_to."_$field_name" ;
-					$value = isset($this->$compound_field_name) ? $this->$compound_field_name : $this->creation_parameters[$compound_field_name] ;
-					$key_class_fields[$field_name] = $value ;
+					foreach ( $key_class::$fields as $field_name => $field_options) {
+						$compound_field_name = static::$belongs_to."_$field_name" ;
+						$value = isset($this->$compound_field_name) ? $this->$compound_field_name : $this->creation_parameters[$compound_field_name] ;
+						$key_class_fields[$field_name] = $value ;
 
-				}
-				print_r($key_class_fields) ;
-				$key_obj = $key_class::find_or_create($key_class_fields) ;
-				if($key_obj){
-					$fields[static::$belongs_to."_id"] = $key_obj->id ; 
-				} else {
-					trigger_error("Creation of ".static::$belongs_to." failed.", E_USER_ERROR) ;
+					}
+					$key_obj = $key_class::find_or_create($key_class_fields) ;
+					if($key_obj){
+						$fields[$fk_field] = $key_obj->id ; 
+					}
 				}
 
 			}
@@ -140,11 +174,13 @@
 					$this->creation_parameters[$field_name] =  call_user_func($field_options['mechanized'][0], $field_options['mechanized'][1]);
 				}
 				$value = isset($this->$field_name) ? $this->$field_name : $this->creation_parameters[$field_name] ; 
+				$value = !isset($value) ? $field_options['default'] : $value ; 
 				$fields[$field_name] =  $value; 
 				$this->$field_name = $value ;
 			}
+
 			if(! isset($this->id)){
-				$wpdb->insert(static::table_name(), $fields) ;
+				$result = $wpdb->insert(static::table_name(), $fields) ;
 				$this->id = $wpdb->insert_id ; 
 			} else {
 				$wpdb->update(static::table_name(), $fields, array('id' => $this->id)) ;
