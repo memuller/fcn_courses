@@ -48,7 +48,7 @@
 			if (isset(static::$belongs_to)) {
 				$field_definitions[]= static::$belongs_to."_id bigint(20) unsigned not null" ;
 			}
-			
+
 			foreach (static::$fields as $field_name => $field_options) {
 				if( !isset($field_options['size'])) $field_options['size'] = 255 ;
 				
@@ -89,16 +89,19 @@
 
 		static public function find_or_create($args){
 			global $wpdb ;
-			$clausule = static::unique_field_where_clausule() ;
-			if( is_array($args)){
-				$param = $args[static::unique_field()] ;
+			if(isset(static::$belongs_to)) {
+
 			} else {
-				$param = $args ; 
+				$clausule = static::unique_field_where_clausule() ;
+				if( is_array($args)){
+					$param = $args[static::unique_field()] ;
+				} else {
+					$param = $args ; 
+				}
+				$sql = $wpdb->prepare(
+					"select * from ".static::table_name()." where $clausule", $param) ;
+				$obj = $wpdb->get_row($sql, ARRAY_A) ;
 			}
-			$sql = $wpdb->prepare(
-				"select * from ".static::table_name()." where $clausule", $param) ;
-			$obj = $wpdb->get_row($sql, ARRAY_A) ;
-			
 			if($obj){
 				return new static($obj, false) ;
 			} else {
@@ -109,6 +112,27 @@
 		public function persist(){
 			global $wpdb ;
 			$fields = array();
+
+			if(static::$belongs_to){
+				$key_class_fields = array() ;
+				$splat = explode("\\", static::get_class_name()) ; $namespace = $splat[0] ;
+				$key_class = $namespace . "\\" .ucfirst(static::$belongs_to) ;
+
+				foreach ( $key_class::$fields as $field_name => $field_options) {
+					$compound_field_name = static::$belongs_to."_$field_name" ;
+					$value = isset($this->$compound_field_name) ? $this->$compound_field_name : $this->creation_parameters[$compound_field_name] ;
+					$key_class_fields[$field_name] = $value ;
+
+				}
+				print_r($key_class_fields) ;
+				$key_obj = $key_class::find_or_create($key_class_fields) ;
+				if($key_obj){
+					$fields[static::$belongs_to."_id"] = $key_obj->id ; 
+				} else {
+					trigger_error("Creation of ".static::$belongs_to." failed.", E_USER_ERROR) ;
+				}
+
+			}
 
 			foreach (static::$fields as $field_name => $field_options) {
 				
