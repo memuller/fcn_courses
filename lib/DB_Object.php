@@ -116,15 +116,21 @@
 				if(sizeof($args) == sizeof(static::unique_field())){
 					$param = $args ;
 				} else {
-					$param = array(); $key_class = static::belongs_to_class_name() ;
+					$param = array(); $key_class = static::belongs_to_class_name() ; $key_creation_args = array();
 					foreach (static::unique_field() as $field_name) {
-						if(strstr($field_name, static::$belongs_to)){
-							$inherited_field_name = static::$belongs_to . "_" . $key_class::unique_field() ;
-							$key = $key_class::find_or_create(array($key_class::unique_field() => $args[$inherited_field_name])) ;
-							$args[static::$belongs_to."_id"] = $key->id ;  
-						}
 						$param[$field_name]= $args[$field_name] ;
 					}
+					
+					foreach($args as $field_name => $field_value){
+						if(strstr($field_name, static::$belongs_to)){
+							$inherited_field_name = $field_name ; $field_name = str_replace(static::$belongs_to."_", "", $field_name) ;
+							$key_creation_args[$field_name]= $field_value ;
+						}
+					}
+					$belongs_to_fk_name = static::$belongs_to . "_id" ;
+					$key = $key_class::find_or_create($key_creation_args) ;
+					$param[$belongs_to_fk_name] = $key->id ; 
+
 				}
 				$sql = vsprintf("select * from ".static::table_name()." where $clausule", $param) ;
 			} else {
@@ -150,7 +156,7 @@
 			$fields = array();
 
 			if(static::$belongs_to){
-				$key_class_fields = array() ;
+				$key_class_fields = array() ; $local_fields_from_key = array();
 				$key_class = static::belongs_to_class_name() ;
 				$fk_field = static::$belongs_to."_id" ;
 				
@@ -160,6 +166,7 @@
 						$compound_field_name = static::$belongs_to."_$field_name" ;
 						$value = isset($this->$compound_field_name) ? $this->$compound_field_name : $this->creation_parameters[$compound_field_name] ;
 						$key_class_fields[$field_name] = $value ;
+						$this->$compound_field_name = $value ; 
 
 					}
 					$key_obj = $key_class::find_or_create($key_class_fields) ;
