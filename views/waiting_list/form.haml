@@ -1,24 +1,24 @@
 #waitee
-  %h1 Waiting List
+  %h2 Lista de espera
   - if($success)
     = Presenter::render_partial('waiting_list/success', array('waitee' => $waitee))
   
   - if(isset($success) && ! $success)
     = Presenter::render_partial('waiting_list/failure') ;
   
-  %p There are no classes open for this course right now, but you can sign up here to be notified when a class opens.
+  %p Não há classes abertas para este curso agora, mas você pode se inscrever aqui para ser notificado quando uma for aberta.
   %form{:name => 'waitee_signup', :action => '', :method => 'POST'}
     .field
-      %label{:for => 'waitee[person_name]'} Name *
+      %label{:for => 'waitee[person_name]'} Nome *
       %input{:name => 'waitee[person_name]', :type => 'text'}
     .field
       %label{:for => 'waitee[person_email]'} Email *
       %input{:name => 'waitee[person_email]', :type => 'text'}
     .field
-      %label{:for => 'waitee[person_phone]'} Phone
+      %label{:for => 'waitee[person_phone]'} Telefone
       %input{:name => 'waitee[person_phone]', :type => 'text'}
     
-    %input{:value => 'Sign up', :type => 'submit'}
+    %input{:value => 'Inscrever', :type => 'submit'}
 
     %input{:name => 'waitee[active]', :value => 1, :type => 'hidden'}
     %input{:name => 'action', :value => 'waitee_signup', :type => 'hidden'}

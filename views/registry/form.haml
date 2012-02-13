@@ -1,0 +1,209 @@
+%form{"accept-charset" => "utf-8", :action => "/ingresso/imprimir/", :method => "post"}
+  %fieldset#informacoes_pessoais
+    %legend Informações pessoais
+    %label{:for => "nome"} Nome:
+    %input#nome.required{:name => "nome", :type => "text", :value => ""}
+      .required
+        %label{:for => "feminino"} Feminino:
+        %input#feminino{:checked => "checked", :name => "sexo", :type => "radio", :validate => "required:true", :value => "feminino"}/
+        %label{:for => "masculino"} Masculino:
+        %input#masculino{:name => "sexo", :type => "radio", :value => "masculino"}/
+        %label.error{:for => "sexo", :style => "display:none;"} Por favor selecione o sexo.
+      %label{:for => "data_nascimento"} Data de nascimento:
+      %input#data_nascimento.required.mask-data{:name => "data_nascimento", :type => "text", :value => ""}
+        %div{:id => ""}
+          %label{:for => "naturalidade"} Natural de:
+          %input#naturalidade0.required{:name => "naturalidade", :type => "text", :value => ""}
+            %label{:for => "uf"} Estado de:
+            %select#uf0.required.comboboxrequired{:name => "uf", :value => ""}
+              %option{:value => "0"} Selecione um Estado
+              %option{:value => "AC"} Acre
+              %option{:value => "AL"} Alagoas
+              %option{:value => "AM"} Amazonas
+              %option{:value => "AP"} Amapá
+              %option{:value => "BH"} Bahia
+              %option{:value => "CE"} Ceará
+              %option{:value => "DF"} Distrito Federal
+              %option{:value => "ES"} Espírito Santo
+              %option{:value => "GO"} Goiás
+              %option{:value => "MA"} Maranhão
+              %option{:value => "MG"} Minas Gerais
+              %option{:value => "MS"} Mato Grosso do Sul
+              %option{:value => "MT"} Mato Grosso
+              %option{:value => "PA"} Pará
+              %option{:value => "PB"} Paraíba
+              %option{:value => "PE"} Pernambuco
+              %option{:value => "PI"} Piauí
+              %option{:value => "PR"} Paraná
+              %option{:value => "RJ"} Rio de Janeiro
+              %option{:value => "RN"} Rio Grande do Norte
+              %option{:value => "RO"} Rondônia
+              %option{:value => "RR"} Roraima
+              %option{:value => "RS"} Rio Grande do Sul
+              %option{:value => "SC"} Santa Catarina
+              %option{:value => "SE"} Sergipe
+              %option{:value => "SP"} São Paulo
+              %option{:value => "TO"} Tocantins
+              %option{:value => "AC"} Outra cidade
+  %fieldset#documentacao
+    %legend Documentação
+    %label{:for => "rg"} RG:
+    %input#rg.required{:name => "rg", :type => "text", :value => ""}
+      %br
+        %label{:for => "cpf"} CPF:
+        %input#cpf.required.mask-cpf{:name => "cpf", :type => "text", :value => ""}
+  %fieldset#filiacao
+    %legend Filiação
+    %fieldset#mae
+      %legend Informações maternas
+      %label{:for => "nome_mae"} Nome:
+      %input#nome_mae.required{:name => "nome_mae", :type => "text", :value => ""}
+        %label{:for => "data_nascimento_mae"} Data de nascimento:
+        %input#data_nascimento_mae.required.mask-data{:name => "data_nascimento_mae", :type => "text", :value => ""}
+          %div
+            %label{:for => "naturalidade_mae"} Natural de:
+            %input#naturalidade1.required{:name => "naturalidade_mae", :value => ""}
+              %label{:for => "naturalidade_mae_uf"} Estado de:
+              %select#uf1.required.comboboxrequired{:name => "naturalidade_mae_uf", :value => ""}
+                %option{:value => "0"} Selecione um Estado
+                %option{:value => "AC"} Acre
+                %option{:value => "AL"} Alagoas
+                %option{:value => "AM"} Amazonas
+                %option{:value => "AP"} Amapá
+                %option{:value => "BH"} Bahia
+                %option{:value => "CE"} Ceará
+                %option{:value => "DF"} Distrito Federal
+                %option{:value => "ES"} Espírito Santo
+                %option{:value => "GO"} Goiás
+                %option{:value => "MA"} Maranhão
+                %option{:value => "MG"} Minas Gerais
+                %option{:value => "MS"} Mato Grosso do Sul
+                %option{:value => "MT"} Mato Grosso
+                %option{:value => "PA"} Pará
+                %option{:value => "PB"} Paraíba
+                %option{:value => "PE"} Pernambuco
+                %option{:value => "PI"} Piauí
+                %option{:value => "PR"} Paraná
+                %option{:value => "RJ"} Rio de Janeiro
+                %option{:value => "RN"} Rio Grande do Norte
+                %option{:value => "RO"} Rondônia
+                %option{:value => "RR"} Roraima
+                %option{:value => "RS"} Rio Grande do Sul
+                %option{:value => "SC"} Santa Catarina
+                %option{:value => "SE"} Sergipe
+                %option{:value => "SP"} São Paulo
+                %option{:value => "TO"} Tocantins
+                %option{:value => "AC"} Outra cidade
+    %fieldset#pai
+      %legend Informações paternas
+      %label{:for => "nome_pai"} Nome:
+      %input#nome_pai.required{:name => "nome_pai", :type => "text", :value => ""}
+        %label{:for => "data_nascimento_pai"} Data de nascimento:
+        %input#data_nascimento_pai.required.mask-data{:name => "data_nascimento_pai", :type => "text", :value => ""}
+          %div
+            %label{:for => "naturalidade_pai"} Natural de:
+            %input#naturalidade2.required{:name => "naturalidade_pai", :type => "select", :value => ""}
+              %label{:for => "naturalidade_pai_uf"} Estado de:
+              %select#uf2.required.comboboxrequired{:name => "naturalidade_pai_uf", :value => ""}
+                %option{:value => "0"} Selecione um Estado
+                %option{:value => "AC"} Acre
+                %option{:value => "AL"} Alagoas
+                %option{:value => "AM"} Amazonas
+                %option{:value => "AP"} Amapá
+                %option{:value => "BH"} Bahia
+                %option{:value => "CE"} Ceará
+                %option{:value => "DF"} Distrito Federal
+                %option{:value => "ES"} Espírito Santo
+                %option{:value => "GO"} Goiás
+                %option{:value => "MA"} Maranhão
+                %option{:value => "MG"} Minas Gerais
+                %option{:value => "MS"} Mato Grosso do Sul
+                %option{:value => "MT"} Mato Grosso
+                %option{:value => "PA"} Pará
+                %option{:value => "PB"} Paraíba
+                %option{:value => "PE"} Pernambuco
+                %option{:value => "PI"} Piauí
+                %option{:value => "PR"} Paraná
+                %option{:value => "RJ"} Rio de Janeiro
+                %option{:value => "RN"} Rio Grande do Norte
+                %option{:value => "RO"} Rondônia
+                %option{:value => "RR"} Roraima
+                %option{:value => "RS"} Rio Grande do Sul
+                %option{:value => "SC"} Santa Catarina
+                %option{:value => "SE"} Sergipe
+                %option{:value => "SP"} São Paulo
+                %option{:value => "TO"} Tocantins
+                %option{:value => "AC"} Outra cidade
+  %fieldset#contato
+    %legend Contato
+    %label{:for => "e-mail"} E-mail:
+    %input#e-mail.required.email{:name => "e-mail", :type => "text", :value => ""}
+      %label{:for => "tel_fixo"} Telefone:
+      %input#tel_fixo.required.mask-fone{:name => "tel_fixo", :type => "text", :value => ""}
+        %label{:for => "celular"} Celular:
+        %input#celular.required{:name => "celular", :type => "text", :value => ""}
+  %fieldset#endereco
+    %legend Endereço
+    %label{:for => "cep"} CEP:
+    %input#cep.required.mask-cep{:name => "cep", :type => "text", :value => ""}
+      %div
+        %label{:for => "rua"} Rua (Av. etc.):
+        %input#rua.required{:name => "rua", :type => "text", :value => ""}
+          %label{:for => "numero"} Numero:
+          %input#numero.required{:name => "numero", :type => "text", :value => ""}
+      %label{:for => "complemento"} Complemento:
+      %input#complemento{:name => "complemento", :type => "text", :value => ""}
+        %div
+          %label{:for => "endereco_uf"} Estado:
+          %select#estado.required.comboboxrequired{:name => "endereco_uf", :value => ""}
+            %option{:value => "0"} Selecione um Estado
+            %option{:value => "AC"} Acre
+            %option{:value => "AL"} Alagoas
+            %option{:value => "AM"} Amazonas
+            %option{:value => "AP"} Amapá
+            %option{:value => "BH"} Bahia
+            %option{:value => "CE"} Ceará
+            %option{:value => "DF"} Distrito Federal
+            %option{:value => "ES"} Espírito Santo
+            %option{:value => "GO"} Goiás
+            %option{:value => "MA"} Maranhão
+            %option{:value => "MG"} Minas Gerais
+            %option{:value => "MS"} Mato Grosso do Sul
+            %option{:value => "MT"} Mato Grosso
+            %option{:value => "PA"} Pará
+            %option{:value => "PB"} Paraíba
+            %option{:value => "PE"} Pernambuco
+            %option{:value => "PI"} Piauí
+            %option{:value => "PR"} Paraná
+            %option{:value => "RJ"} Rio de Janeiro
+            %option{:value => "RN"} Rio Grande do Norte
+            %option{:value => "RO"} Rondônia
+            %option{:value => "RR"} Roraima
+            %option{:value => "RS"} Rio Grande do Sul
+            %option{:value => "SC"} Santa Catarina
+            %option{:value => "SE"} Sergipe
+            %option{:value => "SP"} São Paulo
+            %option{:value => "TO"} Tocantins
+            %option{:value => "AC"} Outra cidade
+          %label{:for => "cidade"} Cidade:
+          %select#cidade.required.comboboxrequired{:name => "cidade", :value => ""}
+            %option Primeiro selecione um Estado
+  %fieldset#inscricao
+    %legend Inscrição
+    %label{:for => "tipo_de_curso"} tipo:
+    %select#tipo_de_curso.comboboxrequired{:name => "tipo_de_curso"}
+      %option{:selected => "selected", :value => "1"} Graduação
+    %select#graduacao.curso.comboboxrequired{:name => "curso", :size => "1"}
+      %option Selecione o tipo de curso
+    %br
+      %span#valor_vestibular_graduacao.valor
+  %fieldset{:id => "situação_especial"}
+    %legend Necessidade especial
+    %label{:for => ""} Selecione se possui alguma necessidade especial:
+    %select#situacao_especial{:name => "situacao_especial", :size => "1"}
+      %option{:value => "Nenhuma"} Não possuo
+      %option{:value => "Locomotora"} Locomotora
+      %option{:value => "Visual"} Visual
+      %option{:value => "Auditiva"} Auditiva
+      %option{:value => "Outros"} Outros
+  %input#inscrever{:name => "inscrever", :type => "submit", :value => "Efetuar inscrição"}
