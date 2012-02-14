@@ -62,13 +62,20 @@
 		return $content ; 
 	}
 
-	function fcn_css() { ?>
+	function fcn_css() { 
+		//inserindo tag html direto
+		?>
 		<link rel='stylesheet' href='<?php bloginfo('wpurl'); ?>/wp-content/plugins/fcn_courses/static/css/main.css' type='text/css' media='screen'/>"
 	<?php }
 	
-	function fcn_js(){
-		//echo "string";
-	}
+	function fcn_js(){ 
+		//inserindo tag html direto
+		?>
+		<script type="text/javascript" src="<?php bloginfo('template_directory')?>/js/jquery-validate/jquery.validate.js"></script>
+		<script type="text/javascript" src="<?php bloginfo('template_directory')?>/js/metadata.js"></script>
+		<script type="text/javascript" src="<?php bloginfo('template_directory')?>/js/mask.js"></script>
+		<script type="text/javascript" src="<?php bloginfo('template_directory')?>/js/jquery-validate/application.js"></script>
+	<?php }
 
 	add_filter('the_content', 'fcn_show_forms') ;
 	add_action('plugins_loaded', 'fcn_courses_enforce_db') ;
