@@ -62,10 +62,17 @@
 		return $content ; 
 	}
 
-
+	function fcn_css() { ?>
+		<link rel='stylesheet' href='<?php bloginfo('wpurl'); ?>/wp-content/plugins/fcn_courses/static/css/main.css' type='text/css' media='screen'/>"
+	<?php }
+	
+	function fcn_js(){
+		//echo "string";
+	}
 
 	add_filter('the_content', 'fcn_show_forms') ;
 	add_action('plugins_loaded', 'fcn_courses_enforce_db') ;
-
+	add_action('wp_head', 'fcn_css') ;
+	add_action('wp_head', 'fcn_js') ;
 
 ?>

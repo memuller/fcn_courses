@@ -10,15 +10,15 @@
   %form{:name => 'waitee_signup', :action => '', :method => 'POST'}
     .field
       %label{:for => 'waitee[person_name]'} Nome *
-      %input{:name => 'waitee[person_name]', :type => 'text'}
+      %input{:name => 'waitee[person_name]', :id=>'waitee[person_name]' ,:type => 'text'}
     .field
       %label{:for => 'waitee[person_email]'} Email *
-      %input{:name => 'waitee[person_email]', :type => 'text'}
+      %input{:name => 'waitee[person_email]', :id => 'waitee[person_email]', :type => 'text'}
     .field
       %label{:for => 'waitee[person_phone]'} Telefone
-      %input{:name => 'waitee[person_phone]', :type => 'text'}
+      %input{:name => 'waitee[person_phone]', :id=>'waitee[person_phone]' ,:type => 'text'}
     
-    %input{:value => 'Inscrever', :type => 'submit'}
+    %input{:value => 'Inscrever', :type => 'submit', :id=>'submit'}
 
     %input{:name => 'waitee[active]', :value => 1, :type => 'hidden'}
     %input{:name => 'action', :value => 'waitee_signup', :type => 'hidden'}
