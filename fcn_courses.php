@@ -65,16 +65,25 @@
 	function fcn_css() { 
 		//inserindo tag html direto
 		?>
-		<link rel='stylesheet' href='<?php bloginfo('wpurl'); ?>/wp-content/plugins/fcn_courses/static/css/main.css' type='text/css' media='screen'/>"
+		<link rel='stylesheet' href='<?php bloginfo('wpurl'); ?>/wp-content/plugins/fcn_courses/static/css/main.css' type='text/css' media='screen'/>
+		<script type="text/javascript" src="<?php bloginfo('url')?>/wp-content/plugins/fcn_courses/static/js/jquery-validate/jquery.validate.js"></script>
+		<script type="text/javascript" src="<?php bloginfo('url')?>/wp-content/plugins/fcn_courses/static/js/metadata.js"></script>
+		<script type="text/javascript" src="<?php bloginfo('url')?>/wp-content/plugins/fcn_courses/static/js/mask.js"></script>
+		<script type="text/javascript" src="<?php bloginfo('url')?>/wp-content/plugins/fcn_courses/static/js/jquery-validate/application.js"></script>
+		<script type="text/javascript" src="<?php bloginfo('url')?>/wp-content/plugins/fcn_courses/static/js/doValidate.js"></script>
+		<script type="text/javascript" charset="utf-8">
+		$(document).ready(function() {
+			alert("dfsfdsfad");
+		});
+		
+		</script>
+		
 	<?php }
 	
 	function fcn_js(){ 
 		//inserindo tag html direto
 		?>
-		<script type="text/javascript" src="<?php bloginfo('template_directory')?>/js/jquery-validate/jquery.validate.js"></script>
-		<script type="text/javascript" src="<?php bloginfo('template_directory')?>/js/metadata.js"></script>
-		<script type="text/javascript" src="<?php bloginfo('template_directory')?>/js/mask.js"></script>
-		<script type="text/javascript" src="<?php bloginfo('template_directory')?>/js/jquery-validate/application.js"></script>
+		
 	<?php }
 
 	add_filter('the_content', 'fcn_show_forms') ;
