@@ -40,6 +40,7 @@
 
 	# Requires models and presenters.
 	require_once 'models/Course.php' ; FCN\Course::build() ; 
+	require_once 'models/Edition.php' ; FCN\Edition::build() ;
 	require_once 'models/Person.php' ;
 	require_once 'models/Waitee.php' ;
 	require_once 'presenters/WaitingList.php' ;
