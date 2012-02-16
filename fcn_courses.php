@@ -65,30 +65,17 @@
 	function fcn_css() { 
 		//inserindo tag html direto
 		?>
-		<link rel='stylesheet' href='<?php bloginfo('wpurl'); ?>/wp-content/plugins/fcn_courses/static/css/main.css' type='text/css' media='screen'/>
-		<script type="text/javascript" src="<?php bloginfo('url')?>/wp-content/plugins/fcn_courses/static/js/jquery-validate/jquery.validate.js"></script>
-		<script type="text/javascript" src="<?php bloginfo('url')?>/wp-content/plugins/fcn_courses/static/js/metadata.js"></script>
-		<script type="text/javascript" src="<?php bloginfo('url')?>/wp-content/plugins/fcn_courses/static/js/mask.js"></script>
-		<script type="text/javascript" src="<?php bloginfo('url')?>/wp-content/plugins/fcn_courses/static/js/jquery-validate/application.js"></script>
-		<script type="text/javascript" src="<?php bloginfo('url')?>/wp-content/plugins/fcn_courses/static/js/doValidate.js"></script>
-		<script type="text/javascript" charset="utf-8">
-		$(document).ready(function() {
-			alert("dfsfdsfad");
-		});
-		
-		</script>
-		
-	<?php }
-	
-	function fcn_js(){ 
-		//inserindo tag html direto
-		?>
-		
+		<link rel="stylesheet" href="<?php bloginfo('wpurl'); ?>/wp-content/plugins/fcn_courses/static/css/main.css" type="text/css" media="screen"/>
+		<script src="<?php bloginfo('wpurl'); ?>/wp-content/plugins/fcn_courses/static/js/doValidate.js" type="text/javascript" charset="utf-8"></script>
 	<?php }
 
+	function deRegisterJquery() {
+	    wp_deregister_script( 'jquery' );
+	}    
+ 
+	add_action('wp_enqueue_scripts', 'deRegisterJquery');
+	
 	add_filter('the_content', 'fcn_show_forms') ;
 	add_action('plugins_loaded', 'fcn_courses_enforce_db') ;
 	add_action('wp_head', 'fcn_css') ;
-	add_action('wp_head', 'fcn_js') ;
-
 ?>

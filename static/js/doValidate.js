@@ -1,3 +1,3 @@
-$("body").click(function() {
-	alert("cachorro?");
+$("#header").click(function() {
+	alert("fsdffsdfsd")
 });
