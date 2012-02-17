@@ -32,6 +32,9 @@
 	# Sets base plugin path. With backslashes.
 	$plugin_path = plugin_dir_path(__FILE__) ;
 
+	# Sets base url.
+	$plugin_url = WP_PLUGIN_URL . "/"."fcn_courses"."/" ;
+
 	# Requires vendored libs and base structure.
 	require_once 'vendors/haml/HamlParser.class.php' ;
 	require_once 'vendors/jw_custom_posts/jw_custom_posts.php' ;
