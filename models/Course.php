@@ -39,6 +39,13 @@
 			
 		}
 
+		function classes(){
+			global $wpdb ;
+			$sql = $wpdb->prepare("SELECT ID, post_title from $wpdb->posts where post_status = %s and post_parent = %d", 
+				'publish',$this->ID) ;
+			return $wpdb->get_results($sql) ;
+		}
+
 		function waitees(){
 			global $wpdb ;
 			$waitee_table = Waitee::table_name() ; $person_table = Person::table_name();
