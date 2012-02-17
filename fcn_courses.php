@@ -68,42 +68,43 @@
 	}
 	
 	function fcn_frontend_codes(){
-		global $plugin_url , $post ;
+		global $post ;
 
 		if($post->post_type == 'courses'){
 
 			# general JS
-			wp_enqueue_script('jquery-validate', $plugin_url . 'static/js/jquery-validate/jquery.validate.js', array('jquery')) ;
-			wp_enqueue_script('jquery-metadata', $plugin_url . 'static/js/jquery-metadata/jquery.metadata.js', array('jquery')) ;
-			wp_enqueue_script('jquery-datepick', $plugin_url . 'static/js/jquery-datepick/jquery.datepick.js', array('jquery')) ;
-			wp_enqueue_script('jquery-datepick-br', $plugin_url . 'static/js/jquery-datepick/jquery.datepick-pt-BR.js', 
+			wp_enqueue_script('jquery-validate', plugins_url('static/js/jquery-validate/jquery.validate.js', __FILE__), array('jquery')) ;
+			wp_enqueue_script('jquery-metadata', plugins_url('static/js/jquery-metadata/jquery.metadata.js', __FILE__), array('jquery')) ;
+			wp_enqueue_script('jquery-datepick', plugins_url('static/js/jquery-datepick/jquery.datepick.js', __FILE__), array('jquery')) ;
+			wp_enqueue_script('jquery-datepick-br', plugins_url('static/js/jquery-datepick/jquery.datepick-pt-BR.js', __FILE__), 
 				array('jquery', 'jquery-datepick')) ;
-			wp_enqueue_script('mask', $plugin_url . 'static/js/mask/mask.js', array('jquery')) ;
+			wp_enqueue_script('mask', plugins_url('static/js/mask/mask.js', __FILE__), array('jquery')) ;
 
 			# general CSS
-			wp_enqueue_style('fcn-courses', $plugin_url . 'static/css/main.css') ;
-			wp_enqueue_style('jquery-datepick', $plugin_url . 'static/js/jquery-datepick/jquery.datepick.css') ;
+			wp_enqueue_style('fcn-courses', plugins_url('static/css/main.css', __FILE__)) ;
+			wp_enqueue_style('jquery-datepick', plugins_url('static/js/jquery-datepick/jquery.datepick.css', __FILE__)) ;
 
 			# registration/waiting list specific JS
-			wp_enqueue_script('class-registration', $plugin_url . 'static/js/class_registration.js', 
+			wp_enqueue_script('class-registration', plugins_url('static/js/class_registration.js', __FILE__), 
 				array('jquery-datepick', 'jquery-metadata','jquery-validate', 'mask') ) ;
-			wp_enqueue_script('waiting-list', $plugin_url . 'static/js/waiting_list.js', 
+			wp_enqueue_script('waiting-list', plugins_url('static/js/waiting_list.js', __FILE__), 
 				array('jquery-datepick', 'jquery-metadata','jquery-validate', 'mask') ) ;
 		}
 	}
 
 	function fcn_backend_styles(){
 		global $plugin_url ;
-		wp_enqueue_style('jquery-datepick', $plugin_url . 'static/js/jquery-datepick/jquery.datepick.css') ;
+		wp_enqueue_style('jquery-datepick', plugins_url('static/js/jquery-datepick/jquery.datepick.css', __FILE__)) ;
 	}
 
 	function fcn_backend_scripts(){
 		global $plugin_url ;
 
-		wp_enqueue_script('jquery-fixer', $plugin_url . 'static/js/jquery.fixer.js', array('jquery')) ;
-		wp_enqueue_script('jquery-datepick', $plugin_url . 'static/js/jquery-datepick/jquery.datepick.js', array('jquery')) ;
-		wp_enqueue_script('jquery-datepick-br', $plugin_url . 'static/js/jquery-datepick/jquery.datepick-pt-BR.js', array('jquery', 'jquery-datepick'))  ;
-		wp_enqueue_script('edition_admin', $plugin_url . 'static/js/edition_admin.js', array('jquery-datepick-br')) ;
+		wp_enqueue_script('jquery-fixer', plugins_url('static/js/jquery.fixer.js', __FILE__), array('jquery')) ;
+		wp_enqueue_script('jquery-datepick', plugins_url('static/js/jquery-datepick/jquery.datepick.js', __FILE__), array('jquery')) ;
+		wp_enqueue_script('jquery-datepick-br', plugins_url('static/js/jquery-datepick/jquery.datepick-pt-BR.js', __FILE__), 
+			array('jquery', 'jquery-datepick'))  ;
+		wp_enqueue_script('edition_admin', plugins_url('static/js/edition_admin.js', __FILE__), array('jquery-datepick-br')) ;
 	}
 
 	add_filter('the_content', 'fcn_show_forms') ;
