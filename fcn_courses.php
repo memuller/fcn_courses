@@ -112,7 +112,7 @@
 	    wp_deregister_script( 'jquery' );
 	}    
  
-	add_action('wp_enqueue_scripts', 'deRegisterJquery');
+	//add_action('wp_enqueue_scripts', 'deRegisterJquery');
 	
 	add_filter('the_content', 'fcn_show_forms') ;
 	add_action('plugins_loaded', 'fcn_courses_enforce_db') ;

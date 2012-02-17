@@ -23,4 +23,7 @@
 			#registry fieldset div.sexo input{margin:0;width:15px;border:1px solid #000;}
 		#registry #inscricao span.valor{color:green;font-weight:bold;display:block; font-size:16px; padding:10px;}
 		#registry #inscrever{clear:both;display:block;padding:10px;margin:20px;}
+		label.error{color:#ff0000;font-weight:bold;}
+			label.error:before{content:'\230A';}
+		
 		
