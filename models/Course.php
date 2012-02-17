@@ -7,7 +7,7 @@
 		static $creation_fields = array( 
 			'label' => 'Courses','description' => 'Courses applied by FCN.',
 			'public' => true,'show_ui' => true,'show_in_menu' => true,'capability_type' => 'post',
-			'hierarchical' => false,'rewrite' => array('slug' => ''),'query_var' => true,
+			'hierarchical' => true,'rewrite' => array('slug' => ''),'query_var' => true,
 			'supports' => array('title','editor','excerpt','trackbacks','custom-fields',
 				'comments','revisions','thumbnail'),
 			'labels' => array (
