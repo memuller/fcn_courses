@@ -48,6 +48,7 @@
 	require_once 'models/Waitee.php' ;
 	require_once 'presenters/WaitingList.php' ;
 	require_once 'presenters/CourseAdmin.php' ; FCN\CourseAdminPresenter::build() ;
+	require_once 'presenters/EditionAdmin.php' ; FCN\EditionAdminPresenter::build() ;
 
 	function fcn_courses_enforce_db(){
 		global $fcn_courses_db_version ;

@@ -3,20 +3,23 @@
 	class CourseAdminPresenter {
 
 		static function collumn_headers($collumns){
-			if (! isset($collumns['waitee'])) {
-				$collumns['waitee'] = 'Waiting List' ;
-			}
-			print_r($collumns) ;
+			if(! isset($collumns['waitee'])) $collumns['waitee'] = 'Waiting List' ;
+			if(! isset($collumns['classes'])) $collumns['classes'] = 'Classes' ;
 			return $collumns ;
 		}
 		
 		static function collumn_info($collumn_name, $post_id){
-			
+			$course = new Course() ;
 			switch ($collumn_name) {
 				
 				case 'waitee':
-					$course = new Course() ;
 					echo sizeof($course->waitees()) ;
+					break;
+				
+				case 'classes' :
+					foreach ($course->classes() as $class) {?> 
+						<a href="<?php echo admin_url("post.php?post=$class->ID&action=edit") ?>"><?php echo $class->post_title ?></a>
+					<?php }
 					break;
 			}
 		}
@@ -28,7 +31,7 @@
 
 		static function build(){
 			add_filter( 'manage_edit-courses_columns', 'FCN\CourseAdminPresenter::collumn_headers', 10, 1);
-			add_action( 'manage_posts_custom_column', 'FCN\CourseAdminPresenter::collumn_info', 10, 2);
+			add_action( 'manage_pages_custom_column', 'FCN\CourseAdminPresenter::collumn_info', 10, 2);
 			add_action( 'admin_menu', 'FCN\CourseAdminPresenter::waiting_list_page' ) ;
 		}
 	}

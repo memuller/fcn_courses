@@ -1,0 +1,9 @@
+#parent_course
+  %b= "Course: "
+  = $courses_menu
+#start_date
+  %b= "Start date: "
+  %input.inlineDatePicker{:type => 'text', :name => 'start_date', :size => 10, :value => $edition->start_date }
+#end_date
+  %b= "End date: "
+  %input.inlineDatePicker{:type => 'text', :name => 'end_date', :size => 10, :value => $edition->end_date }
