@@ -11,7 +11,7 @@
 #registry{margin-top:30px;}
 		#registry fieldset{border-top:#ccc 1px solid;margin:10px;padding:10px 0;position:relative;}
 			#registry fieldset label{cursor:pointer;display:block;padding:0 10px;}
-			#registry fieldset input, #registry fieldset select{margin:5px 0;padding:5px;margin-left:10px;width:300px;}
+			#registry fieldset input, #registry fieldset select, #waitee form div input{margin:5px 0;padding:5px;margin-left:10px;width:300px;}
 				
 			#registry fieldset .litle{width:200px;}
 			#registry fieldset legend{font-size:16px;position:relative;top:-5px;}
@@ -25,5 +25,8 @@
 		#registry #inscrever{clear:both;display:block;padding:10px;margin:20px;}
 		label.error{color:#ff0000;font-weight:bold;}
 			label.error:before{content:'\230A';}
-		
+			
+#confirm{border-top:1px dotted #ccc;margin-top:20px;clear:both;}
+	#confirm h2, #confirm h3{font-weight:normal;}
+	#confirm hr{border-color:#ccc;}
 		
