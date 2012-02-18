@@ -1,6 +1,6 @@
 <?php
 	namespace FCN ;  
-	
+	use DateTime ;
 	class Edition {
 
 		static $name = "classes" ;
@@ -39,23 +39,37 @@
 
 		function __get($name){
 			global $post ;
-			if(isset(static::$fields[$name])){
+			if(isset(static::$fields[$name])) {
 				return get_post_meta($post->ID, $name, true) ;
 			} else {
-				return $post->$name ; 
+				return isset($this->post) ? $this->post->$name : $post->$name ; 
 			}
 		}
 
 		function datetime($field){
-			if($fields[$field]['type'] == 'date'){
+			if(static::$fields[$field]['type'] == 'date'){
 				$date = explode('/', $this->$field) ;
 				$date = sprintf("%s-%s-%s", $date[2], $date[1], $date[0]);
 				return new DateTime($date) ;
 			}
 		}
 
-		function __construct($args=array()){
+		function accepts_signups(){
+			$now = new DateTime('now');
+			$in_time = $this->datetime('signup_start_date') <= $now && $this->datetime('signup_end_date') >= $now ; 
 			
+			return (bool)$in_time ; 
+		}
+
+		function __construct($post=nil){
+			if($post){
+				$this->post = $post ; 
+				foreach(get_post_custom($post->ID) as $field_name => $field_values){
+					if(isset(static::$fields[$field_name])){
+						$this->$field_name = $field_values[0] ;
+					}
+				}
+			}
 		}
 
 
