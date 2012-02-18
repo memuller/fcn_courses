@@ -15,8 +15,15 @@
 		}
 
 		public static function index(){
-			global $post ;
-			return self::render_to_string('registry/form', array('post' => $post)) ;
+			global $post ; $course = new Course() ;
+			$class = $course->running_classes() ;
+			if( ! empty($class)) {
+				$class = $class[0] ;
+				return self::render_to_string('registry/form', array('post' => $post, 'class' => $class)) ;
+			} else {
+				return self::render_to_string('waiting_list/form', array('post' => $post)) ;	
+			}
+			
 		}
 
 		public static function post(){
