@@ -17,8 +17,10 @@
 					break;
 				
 				case 'classes' :
-					foreach ($course->classes() as $class) {?> 
-						<a href="<?php echo admin_url("post.php?post=$class->ID&action=edit") ?>"><?php echo $class->post_title ?></a>
+					foreach ($course->classes() as $class) { $class = new Edition($class) ;?>
+						<?php if($open = $class->accepts_signups()) { ?> <b> <?php } ?>
+							<a href="<?php echo admin_url("post.php?post=$class->ID&action=edit") ?>"><?php echo $class->post_title ?></a>
+						<?php if($open) { ?> </b> <?php } ?>
 					<?php }
 					break;
 			}
