@@ -63,7 +63,7 @@
 	function fcn_show_forms($content){
 		global $post ;  
 		if($post->post_type == 'courses'){
-			$content .= FCN\WaitingListPresenter::present() ; 
+			$content .= FCN\RegistryPresenter::present() ; 
 		}
 		return $content ; 
 	}
