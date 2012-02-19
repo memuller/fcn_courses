@@ -55,8 +55,8 @@
         %input#cpf.required.mask-cpf.litle{:name => "cpf", :type => "text", :value => ""}
   %fieldset#contato
     %legend Contato
-    %label{:for => "e-mail"} E-mail:
-    %input#e-mail.required.email{:name => "e-mail", :type => "text", :value => ""}
+    %label{:for => "mail"} E-mail:
+    %input#mail.required.email{:id => "mail" ,:name => "mail", :type => "text", :value => ""}
       %label{:for => "tel_fixo"} Telefone:
       %input#tel_fixo.required.mask-fone.litle{:name => "tel_fixo", :type => "text", :value => ""}
         %label{:for => "celular"} Celular:
@@ -73,40 +73,10 @@
       %label{:for => "complemento"} Complemento:
       %input#complemento{:name => "complemento", :type => "text", :value => ""}
         %div
-          %label{:for => "endereco_uf"} Estado:
-          %select#estado.required.comboboxrequired.litle{:name => "endereco_uf", :value => ""}
-            %option{:value => "0"} Selecione um Estado
-            %option{:value => "AC"} Acre
-            %option{:value => "AL"} Alagoas
-            %option{:value => "AM"} Amazonas
-            %option{:value => "AP"} Amapá
-            %option{:value => "BH"} Bahia
-            %option{:value => "CE"} Ceará
-            %option{:value => "DF"} Distrito Federal
-            %option{:value => "ES"} Espírito Santo
-            %option{:value => "GO"} Goiás
-            %option{:value => "MA"} Maranhão
-            %option{:value => "MG"} Minas Gerais
-            %option{:value => "MS"} Mato Grosso do Sul
-            %option{:value => "MT"} Mato Grosso
-            %option{:value => "PA"} Pará
-            %option{:value => "PB"} Paraíba
-            %option{:value => "PE"} Pernambuco
-            %option{:value => "PI"} Piauí
-            %option{:value => "PR"} Paraná
-            %option{:value => "RJ"} Rio de Janeiro
-            %option{:value => "RN"} Rio Grande do Norte
-            %option{:value => "RO"} Rondônia
-            %option{:value => "RR"} Roraima
-            %option{:value => "RS"} Rio Grande do Sul
-            %option{:value => "SC"} Santa Catarina
-            %option{:value => "SE"} Sergipe
-            %option{:value => "SP"} São Paulo
-            %option{:value => "TO"} Tocantins
-            %option{:value => "AC"} Outra cidade
+       	  %label{:for => "endereco_uf"} Estado:
+  		  %input.required{:id => "endereco_uf", :name=>"endereco_uf", :type=>"text"}
           %label{:for => "cidade"} Cidade:
-          %select#cidade.required.comboboxrequired.litle{:name => "cidade", :value => ""}
-            %option Primeiro selecione um Estado
+       	  %input.required{:id => "cidade", :name=>"cidade", :type=>"text"}
   %fieldset{:id => "situação_especial"}
     %legend Necessidade especial
     %label{:for => ""} Selecione se possui alguma necessidade especial:
