@@ -47,6 +47,7 @@
 	require_once 'models/Person.php' ;
 	require_once 'models/Waitee.php' ;
 	require_once 'presenters/WaitingList.php' ;
+	require_once 'presenters/Registry.php' ;
 	require_once 'presenters/CourseAdmin.php' ; FCN\CourseAdminPresenter::build() ;
 	require_once 'presenters/EditionAdmin.php' ; FCN\EditionAdminPresenter::build() ;
 
