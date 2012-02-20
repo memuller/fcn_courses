@@ -111,4 +111,7 @@
 		</select>
 	</fieldset>
 	<input id="inscrever" name="inscrever" type="submit" value="Inscreva-me" />
+	<input <?php html_attributes(array ('name' => 'action', 'value' => 'registree_signup', 'type' => 'hidden')); ?> />
+	<input <?php html_attributes(array ('name' => 'registree[course_id]', 'value' => $post->ID, 'type' => 'hidden')); ?> />
+	<input <?php html_attributes(array ('name' => 'nonce', 'value' => wp_create_nonce('registree_signup'), 'type' => 'hidden')); ?> />
 </form>
