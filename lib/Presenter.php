@@ -9,7 +9,11 @@
 			
 			if(file_exists($path . $view . '.php')){
 				extract($scope) ;
-				require $path . $view . '.php' ; return ;
+				ob_start() ;
+				require $path . $view . '.php' ;
+				$view = ob_get_contents() ;
+				ob_end_clean() ;
+				return $view ;
 			}
 
 			if( ! isset($plugin_haml_parser)) $plugin_haml_parser = new HamlParser($path, $path);
@@ -33,6 +37,14 @@
 			echo self::render_to_string('admin/'. $view, $scope) ;
 		}
 
+	}
+
+	function html_attributes($args){
+		$kv_pairs = "" ;
+		foreach ($args as $name => $value) {
+			$kv_pairs .= sprintf(" %s=\"%s\" ", $name, $value) ;
+		}
+		echo $kv_pairs ;
 	}
 
  ?>
