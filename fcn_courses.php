@@ -27,7 +27,7 @@
 	*/
 
 	# Sets db version.
-	$fcn_courses_db_version = '0.9' ;
+	$fcn_courses_db_version = '0.10' ;
 
 	# Sets base plugin path. With backslashes.
 	$plugin_path = plugin_dir_path(__FILE__) ;
@@ -111,13 +111,6 @@
 		wp_enqueue_script('edition_admin', plugins_url('static/js/edition_admin.js', __FILE__), array('jquery-datepick-br')) ;
 	}
 
-
-	function deRegisterJquery() {
-	    wp_deregister_script( 'jquery' );
-	}    
- 
-	//add_action('wp_enqueue_scripts', 'deRegisterJquery');
-	
 	add_filter('the_content', 'fcn_show_forms') ;
 	add_action('plugins_loaded', 'fcn_courses_enforce_db') ;
 	add_action('wp_enqueue_scripts', 'fcn_frontend_codes') ;

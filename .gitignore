@@ -1,5 +1,5 @@
 *.hphp
-
+*.swp
 static/js/jquery-validate/demo/*
 
 static/js/jquery-validate/localization/*
