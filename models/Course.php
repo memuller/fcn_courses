@@ -46,6 +46,15 @@
 			return $wpdb->get_results($sql) ;
 		}
 
+		function running_classes(){
+			$classes= $this->classes() ; $running_classes = array() ;
+			foreach ($classes as $class) {
+				$class = new Edition($class) ;
+				if($class->accepts_signups()) $running_classes[]= $class ;
+			}
+			return $running_classes ;
+		}
+
 		function waitees(){
 			global $wpdb ;
 			$waitee_table = Waitee::table_name() ; $person_table = Person::table_name();
