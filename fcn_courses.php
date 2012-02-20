@@ -82,6 +82,7 @@
 			wp_enqueue_script('jquery-datepick-br', plugins_url('static/js/jquery-datepick/jquery.datepick-pt-BR.js', __FILE__), 
 				array('jquery', 'jquery-datepick')) ;
 			wp_enqueue_script('mask', plugins_url('static/js/mask/mask.js', __FILE__), array('jquery')) ;
+			wp_enqueue_script('jquery-cep', plugins_url('static/js/jquery-cep/jquery.cep-1.0.min.js', __FILE__), array('jquery')) ;
 
 			# general CSS
 			wp_enqueue_style('fcn-courses', plugins_url('static/css/main.css', __FILE__)) ;
