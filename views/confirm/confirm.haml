@@ -1,24 +1,14 @@
 #confirm
-  %h3 Olá
-    %span ofsjdfosj
-  %p Você se cadastrou para o 
-    %strong curso nome do curso
-  %p A taxa de inscrição é de R$ '.$curso['valor_inscricao'].'.
-  %p O início da prova será às 9 horas. Você deve chegar com 1 (uma) hora de antecedência, portanto às 8 horas, no local da prova no endereço: Rua Carlos Pinto Filho, s/n – Vila Cacarro – CEP 12.630-000 – Cachoeira Paulista – SP.</p>
-  %hr
-  %h3 Resumo do seu cadastro
+  %h3
+    Olá
+    %span Nome do cara
   %p
-    %strong nome: 
-    Marcos de paiva branco Junior
+    Você se cadastrou para o curso
+    %strong Nome do curso
     %br
-    %strong email 
-    e-mail 
     %br
-    %strong curso:
-    $curso['nome
-    %br
-    %strong Dados para depósito
-    %br
+    %strong Dados para pagamento:
+    %small dados para depósito
     Banco: Santander - 033
     %br
     Agencia: 0143
@@ -28,17 +18,23 @@
     Razao Social: FAT - Fundaçao de Apoio a Tecnologia
     %br
     CNPJ: 58.415.092/0001-50
+  %ul#steps
+    %li
   %hr
-  %p 
-    %small*essas informações foram enviadas para o @email ('. $values['e-mail'] .')
+  %h3 Resumo do seu cadastro
+  %p
+    %strong Nome:
+    Nome do anima;
     %br
-    %small>*em caso de dúvidas e-mail: faleconosco@fcn.edu.br ou Telefone: (12) 3186 2000
+    %strong Email
+    dfaspfoijsadfpoaisjdf
     %br
-    %small>*pressione ctrl+p para imprimir esse comprovante.
+    %strong Curso
+    DSpdoiasjdoaijfposij
+  %hr
+  %p
+    %small *essas informações foram enviadas para o @email ('. $values['e-mail'] .')
     %br
-    %small
-      %a{:href=>"http://fcn.edu.br"} Voltar para a home
-
-
-  
-
+    %small *em caso de dúvidas e-mail: faleconosco@fcn.edu.br ou Telefone: (12) 3186 2000
+    %br
+    %small *pressione ctrl+p para imprimir esse comprovante.
