@@ -79,7 +79,12 @@
 					$field_type = $field_options['type'] ;
 				}
 
-				$default = isset($field_options['default']) ? "default ".$field_options['default'] : "" ;
+				if(isset($field_options['default'])){
+					if(strstr($field_type, 'varchar')) $field_options['default'] = "'".$field_options['default']."'" ;
+					$default = "default ".$field_options['default'] ;
+				} else {
+					$default = "" ;
+				}
 
 				$required = $field_options['required'] ? "not null" : "null" ;
 				$field_definitions[]= "$field_name $field_type $default $required" ;
