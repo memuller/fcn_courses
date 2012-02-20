@@ -16,7 +16,14 @@
 			'born_in_city' => array('size' => 100),
 			'born_in_state' => array('size' => 2),
 			'rg' => array('size' => 15),
-			'cpf' => array('size' => 16)
+			'cpf' => array('size' => 16),
+			'address_street' => array(),
+			'address_number' => array('size' => 8),
+			'address_complement' => array('size' => 10),
+			'address_district' => array(),
+			'address_city' => array(),
+			'address_state' => array('size' => 2)
+
 		) ;
 
 		static $has_many = 'waitee' ;
