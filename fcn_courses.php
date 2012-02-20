@@ -27,7 +27,7 @@
 	*/
 
 	# Sets db version.
-	$fcn_courses_db_version = '0.5' ;
+	$fcn_courses_db_version = '0.7' ;
 
 	# Sets base plugin path. With backslashes.
 	$plugin_path = plugin_dir_path(__FILE__) ;
@@ -46,6 +46,7 @@
 	require_once 'models/Edition.php' ; FCN\Edition::build() ;
 	require_once 'models/Person.php' ;
 	require_once 'models/Waitee.php' ;
+	require_once 'models/Registree.php' ;
 	require_once 'presenters/WaitingList.php' ;
 	require_once 'presenters/Registry.php' ;
 	require_once 'presenters/CourseAdmin.php' ; FCN\CourseAdminPresenter::build() ;
@@ -56,6 +57,7 @@
 		if(get_option('fcn_courses_db_version') != $fcn_courses_db_version){
 			FCN\Person::build_database() ;
 			FCN\Waitee::build_database() ;
+			FCN\Registree::build_database() ;
 			update_option('fcn_courses_db_version', $fcn_courses_db_version) ; 
 		}
 	}
