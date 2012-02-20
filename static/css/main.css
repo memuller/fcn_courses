@@ -30,4 +30,47 @@
 	#confirm h2, #confirm h3{font-weight:normal;}
 	#confirm hr{border-color:#ccc;}
 	#confirm #steps{list-style:none;}
-		#confirm #steps li{background:grey;float:left;margin:10px 5px 20px 5px;width:180px;}
+		#confirm #steps li{
+			-webkit-border-radius: 180px;
+			-moz-border-radius: 180px;
+			border-radius: 180px;
+			background:#FD9409;
+			color:#fff;
+			float:left;
+			margin:10px 5px 20px 5px;
+			height:110px;
+			text-align:center;
+			width:110px;
+		}
+		#confirm #steps li.info, #confirm #transfer label{
+			background: none repeat scroll 0 0 transparent;
+    		color: #444444;
+    		font-family: Georgia;
+    		font-family: Georgia;
+    		font-size: 18px;
+    		font-style: italic;
+    		margin: 30px 20px 0 10px;
+		}
+		#confirm #steps li.one{background-color:;}
+		#confirm #steps li.due{background-color:#7BB247;}
+		#confirm #steps li.tre{background-color:#009CEA;}
+		#confirm #steps li span{
+			display: block;
+			font-family: Georgia;
+			font-size: 14px;
+			font-style: italic;
+			font-weight: bold;
+			margin-top: 10px;
+		}
+		#confirm #steps li p{
+			font-size: 11px;
+			line-height: 14px;
+			margin: 0 auto;
+			width: 85px;
+		}
+		#confirm #payment{background-color:#f2f2f2;clear:both;padding:10px;margin:10px 10px 20px 10px;}
+	#confirm #transfer{background-color:#f2f2f2;display: none;margin:20px 10px 20px 10px;}
+		#confirm #transfer label{float:left;line-height:24px;width:200px;text-align:center;}
+		#confirm #transfer textarea{padding:10px;margin:20px 0;}
+	#confirm #internet_banking a{font-size:11px;}
+	#confirm hr{display:block;clear:both;}
