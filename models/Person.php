@@ -9,7 +9,9 @@
 			'name' => array('required' => true,  'size' => 255) ,
 			'email' => array('required' => true,  'unique' => true, 'size' => 255),
 			'phone' => array('size' => 50), 
-			'registered_in' => array('required' => true, 'type' => 'datetime', 'mechanized' => array('date', 'Y-m-d H:i:s'))
+			'registered_in' => array('required' => true, 'type' => 'datetime', 'mechanized' => array('date', 'Y-m-d H:i:s')),
+			'gender' => array('type' => 'enum', 'values' => array('F','M')),
+			'birthdate' => array('type' => 'date') 
 		) ;
 
 		static $has_many = 'waitee' ;
