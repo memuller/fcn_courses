@@ -7,6 +7,11 @@
 			
 			$path = $plugin_path . 'views/'; 
 			
+			if(file_exists($path . $view . '.php')){
+				extract($scope) ;
+				require $path . $view . '.php' ; return ;
+			}
+
 			if( ! isset($plugin_haml_parser)) $plugin_haml_parser = new HamlParser($path, $path);
 			
 			if ( ! empty($scope)) $plugin_haml_parser->append($scope);
