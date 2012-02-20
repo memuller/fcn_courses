@@ -76,16 +76,26 @@
 				if( !isset($field_options['type'])){
 					$field_type = "varchar(".$field_options['size'].")" ; $is_text = true ;
 				} else {
-
-					if($field_options['type'] == 'enum' || $field_options['type'] == 'set'){
-						$values_list = array() ;
-						foreach ($field_options['values'] as $value) {
-							$values_list[]= "'". $value . "'" ;
-						}
-						$field_type = sprintf("%s(%s)", $field_options['type'], implode(',', $values_list)) ;
-					} else {
-						$field_type = $field_options['type'] ;
-					}
+					
+					switch ($field_options['type']) {
+						
+						case 'enum':
+						case 'set':
+							$values_list = array() ; $is_text = true ;
+							foreach ($field_options['values'] as $value) {
+								$values_list[]= "'". $value . "'" ;
+							}
+							$field_type = sprintf("%s(%s)", $field_options['type'], implode(',', $values_list)) ; 
+							break ;
+						
+						case 'date':
+							$field_type = 'datetime' ; $is_text = true ;
+							break ;
+						
+						default:
+							$field_type = $field_options['type'] ;
+							break ;
+					}	
 				}
 
 				if(isset($field_options['default'])){
@@ -200,6 +210,11 @@
 
 				if(empty($value) && $field_options['required'] && intval($value) != 0){
 					trigger_error("$field_name is required.", E_USER_ERROR) ;
+				}
+
+				if($field_options['type'] == 'date'){
+					$value = explode('/', $value) ;
+					$value = sprintf("%s-%s-%s", $value[2], $value[1], $value[0]);
 				}
 
 				$fields[$field_name] =  $value; 
