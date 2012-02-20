@@ -74,13 +74,22 @@
 				if( !isset($field_options['size'])) $field_options['size'] = 255 ;
 				
 				if( !isset($field_options['type'])){
-					$field_type = "varchar(".$field_options['size'].")" ;
+					$field_type = "varchar(".$field_options['size'].")" ; $is_text = true ;
 				} else {
-					$field_type = $field_options['type'] ;
+
+					if($field_options['type'] == 'enum' || $field_options['type'] == 'set'){
+						$values_list = array() ;
+						foreach ($field_options['values'] as $value) {
+							$values_list[]= "'". $value . "'" ;
+						}
+						$field_type = sprintf("%s(%s)", $field_options['type'], implode(',', $values_list)) ;
+					} else {
+						$field_type = $field_options['type'] ;
+					}
 				}
 
 				if(isset($field_options['default'])){
-					if(strstr($field_type, 'varchar')) $field_options['default'] = "'".$field_options['default']."'" ;
+					if(isset($is_text) && $is_text) $field_options['default'] = "'".$field_options['default']."'" ;
 					$default = "default ".$field_options['default'] ;
 				} else {
 					$default = "" ;
