@@ -9,7 +9,11 @@
 			
 			if(file_exists($path . $view . '.php')){
 				extract($scope) ;
-				require $path . $view . '.php' ; return ;
+				ob_start() ;
+				require $path . $view . '.php' ;
+				$view = ob_get_contents() ;
+				ob_end_clean() ;
+				return $view ;
 			}
 
 			if( ! isset($plugin_haml_parser)) $plugin_haml_parser = new HamlParser($path, $path);
