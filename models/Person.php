@@ -22,7 +22,8 @@
 			'address_complement' => array('size' => 10),
 			'address_district' => array(),
 			'address_city' => array(),
-			'address_state' => array('size' => 2)
+			'address_state' => array('size' => 2),
+			'disability' => array('type' => 'set', 'values' => array('hearing', 'seeing', 'motion', 'other'))
 
 		) ;
 
