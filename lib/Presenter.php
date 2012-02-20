@@ -35,4 +35,12 @@
 
 	}
 
+	function html_attributes($args){
+		$kv_pairs = "" ;
+		foreach ($args as $name => $value) {
+			$kv_pairs .= sprintf(" %s=\"%s\" ", $name, $value) ;
+		}
+		echo $kv_pairs ;
+	}
+
  ?>
