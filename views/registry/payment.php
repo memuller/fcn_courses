@@ -8,9 +8,6 @@
 		<br />
 		<br />
 		<strong>Dados para pagamento:</strong>
-		<small>
-			dados para depósito
-		</small>
 		Banco: Santander - 033
 		<br />
 		Agencia: 0143
@@ -21,9 +18,43 @@
 		<br />
 		CNPJ: 58.415.092/0001-50
 	</p>
-	<ul id="steps" >
-		<li></li>
+	<ul id="steps">
+		<li class="info">
+			Sua inscrição ocorrerá em 3 etapas:
+		</li>
+		<li class="one">
+			<span>Passo 1</span>
+			<p>
+				Faça um depósito na conta informada com o valor de inscrição
+			</p>
+		</li>
+		<li class="due">
+			<span>Passo 2</span>
+			<p>
+				Escaneie ou tire uma fotografia do comprovante de depósito.*
+			</p>
+			
+		</li>
+		<li class="tre">
+			<span>Passo 3</span>
+			<p>
+				Envie esse arquivo no formulário abaixo.
+			</p>
+			
+		</li>		
 	</ul>
+	<p id="internet_banking">
+		<a href="#transfer">*Caso tenha feito transferência por internet banking</a>
+	</p>
+	
+	<form action="" method="" accept-charset="utf-8" id="payment">
+		<label for="envio">Selecione a imagem do comprovante de depósito</label>
+		<input type="file" name="envio" value="" id="envio">
+	</form>
+	<form action="" method="" id="transfer">
+			<label for="name">Caso tenha feito transferência por internet banking, preencha o campo ao lado</label>
+			<textarea name="name" id="name" rows="8" cols="40"></textarea>
+	</form>
 	<hr />
 	<h3>Resumo do seu cadastro</h3>
 	<p>
