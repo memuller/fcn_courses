@@ -8,13 +8,13 @@
 
 		static $fields = array(
 			'status' => array('required' => true, 'default' => 'pending') ,
-			'course_id' => array('required' => true),
+			'class_id' => array('required' => true),
 			'signed_up' => array('required' => true, 'type' => 'datetime', 'mechanized' => array('date', 'Y-m-d H:i:s')),
 			'paid_up' => array('type' => 'datetime' )
 		) ;
 
 		static $compound_indexes = array(
-			'unique' => array('person_id', 'course_id')
+			'unique' => array('person_id', 'class_id')
 		);
 
 		static $belongs_to = 'person' ; 
