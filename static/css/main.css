@@ -1,7 +1,7 @@
 #waitee h2{font-weight:normal;}
 
-#waitee div.failure, #waitee div._success{border-top:1px solid red;border-bottom:1px solid red;background:none!important;color:#ff0000;padding:10px}
-#waitee div._success{border-color:green;color:green;}
+div.failure, #waitee div._success{border-top:1px solid red;border-bottom:1px solid red;background:none!important;color:#ff0000;padding:10px}
+div.success{border-color:green;color:green;}
 /*form*/
 #waitee form div label{display:block;font-size:1.2em;margin-top:5px;cursor:pointer;}
 #waitee form div input{padding:5px;}
