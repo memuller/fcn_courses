@@ -3,16 +3,16 @@
 	<fieldset id="informacoes_pessoais">
 		<legend>Informações pessoais</legend>
 		<label for="nome">Nome:</label>
-		<input class="required" id="nome" name="registry[person_name]" type="text" value="">
+		<input class="required" id="nome" name="registree[person_name]" type="text" value="">
 			<div class="sexo required">
 				<label for="feminino">Feminino:</label>
-				<input checked="checked" id="feminino" name="registry[person_gender]" type="radio" validate="required:true" value="feminino" />
+				<input checked="checked" id="feminino" name="registree[person_gender]" type="radio" validate="required:true" value="feminino" />
 				<label for="masculino" id="masc">Masculino:</label>
-				<input id="masculino" name="registry[person_gender]" type="radio" value="masculino" />
+				<input id="masculino" name="registree[person_gender]" type="radio" value="masculino" />
 				<label class="error" for="sexo" style="display:none;">Por favor selecione o sexo.</label>
 			</div>
 			<label for="data_nascimento">Data de nascimento:</label>
-			<input class="required litle" id="data_nascimento" name="registry[person_birthdate]" type="text" value="">
+			<input class="required litle" id="data_nascimento" name="registree[person_birthdate]" type="text" value="">
 				<div id="">
 					<label for="naturalidade">Natural de:</label>
 					<input class="required litle" id="naturalidade0" name="naturalidade" type="text" value="">
@@ -56,46 +56,46 @@
 	<fieldset id="documentacao">
 		<legend>Documentação</legend>
 		<label for="rg">RG:</label>
-		<input class="required litle rg" id="rg" name="registry[person_rg]" type="text" value="">
+		<input class="required litle rg" id="rg" name="registree[person_rg]" type="text" value="">
 			<br>
 				<label for="cpf">CPF:</label>
-				<input class="required cpf litle" id="cpf" name="registry[person_cpf]" type="text" value="" />
+				<input class="required cpf litle" id="cpf" name="registree[person_cpf]" type="text" value="" />
 			</br>
 		</input>
 	</fieldset>
 	<fieldset id="contato">
 		<legend>Contato</legend>
 		<label for="mail">E-mail:</label>
-		<input class="required email" id="mail_mail" name="registry[person_email]" type="text" value="">
+		<input class="required email" id="mail_mail" name="registree[person_email]" type="text" value="">
 			<label for="tel_fixo">Telefone:</label>
-			<input class="required mask-fone litle" id="tel_fixo" name="registry[person_phone]" type="text" value="">
+			<input class="required mask-fone litle" id="tel_fixo" name="registree[person_phone]" type="text" value="">
 				<label for="celular">Celular:</label>
-				<input class="required litle" id="celular" name="registry[person_mobile]" type="text" value="" />
+				<input class="required litle" id="celular" name="registree[person_mobile]" type="text" value="" />
 			</input>
 		</input>
 	</fieldset>
 	<fieldset id="endereco">
 		<legend>Endereço</legend>
 		<label for="cep">CEP:</label>
-		<input class="required mask-cep litle" id="endereco_cep" name="registry[person_address_cep]" type="text" value="">
+		<input class="required mask-cep litle" id="endereco_cep" name="registree[person_address_cep]" type="text" value="">
 			<div id="address_fields">
 				<label for="rua">Rua (Av. etc.):</label>
-				<input class="required" id="endereco_rua" name="registry[person_address_street]" type="text" value="">
+				<input class="required" id="endereco_rua" name="registree[person_address_street]" type="text" value="">
 					<label for="numero">Numero:</label>
-					<input class="required litle" id="endereco_numero" name="registry[person_address_number]" type="text" value="" />
+					<input class="required litle" id="endereco_numero" name="registree[person_address_number]" type="text" value="" />
 				</input>
 			
 				<label for="complemento">Complemento:</label>
-				<input id="endereco_complemento" name="registry[person_address_complement]" type="text" value="">
+				<input id="endereco_complemento" name="registree[person_address_complement]" type="text" value="">
 				<label for="complemento">Bairro:</label>
-				<input id="endereco_bairro" name="registry[person_address_district]" type="text" value="">
+				<input id="endereco_bairro" name="registree[person_address_district]" type="text" value="">
 					<div>
 						<label for="endereco_estado">Estado:</label>
 					</div>
-					<input class="required" id="endereco_estado" name="registry[person_address_state]" type="text">
+					<input class="required" id="endereco_estado" name="registree[person_address_state]" type="text">
 						<label for="cidade">Cidade:</label>
 					</input>
-					<input class="required" id="endereco_cidade" name="registry[person_address_city]" type="text" />
+					<input class="required" id="endereco_cidade" name="registree[person_address_city]" type="text" />
 				</input>
 			</input>
 		</div>
@@ -103,7 +103,7 @@
 	<fieldset id="situação_especial">
 		<legend>Necessidade especial</legend>
 		<label for="">Selecione se possui alguma necessidade especial:</label>
-		<select id="situacao_especial" name="registry[person_disability]" size="1">
+		<select id="situacao_especial" name="registree[person_disability]" size="1">
 			<option value="">Não possuo</option>
 			<option value="motion">Locomotora</option>
 			<option value="seeing">Visual</option>

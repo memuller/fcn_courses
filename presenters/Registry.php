@@ -29,6 +29,7 @@
 				$class = new Edition() ;
 				$registree = Registree::find_or_create($_POST['registree']) ;
 				if($registree->new_record){
+					print_r($_POST['registree']) ;
 					return self::render_to_string('registry/payment', array('registree' => $registree)) ;
 				} else {
 					return self::render_to_string('registry/form', array('class' => $class, 'success' => false)) ;
