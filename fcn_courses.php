@@ -93,6 +93,9 @@
 				array('jquery-datepick', 'jquery-metadata','jquery-validate', 'jquery-maskedinput') ) ;
 			wp_enqueue_script('waiting-list', plugins_url('static/js/waiting_list.js', __FILE__), 
 				array('jquery-datepick', 'jquery-metadata','jquery-validate', 'jquery-maskedinput') ) ;
+			wp_enqueue_script('payment-confirmation', plugins_url('static/js/payment_confirmation.js', __FILE__), 
+				array('jquery-datepick', 'jquery-metadata','jquery-validate', 'jquery-maskedinput') ) ;
+				
 		}
 	}
 

@@ -8,9 +8,4 @@ jQuery(document).ready(function($) {
 			}
 		}
 	});
-	
-	//general
-	$("#confirm #internet_banking a").click(function() {
-		$("#transfer").show('fast');
-	});
 });
