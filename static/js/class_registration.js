@@ -1,5 +1,8 @@
 jQuery(document).ready( function($) {
 
+	$('#data_nascimento').mask('99/99/99') ;
+	$('#cpf').mask('999.999.999-99') ;
+	$('#rg').mask('');
 	$('input#cep').on('keyup', function(event){
 		if($(this)[0].value.length >= 8){
 			$(this).cep({success: function(data){ 

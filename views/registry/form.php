@@ -56,10 +56,10 @@
 	<fieldset id="documentacao">
 		<legend>Documentação</legend>
 		<label for="rg">RG:</label>
-		<input class="required litle" id="rg" name="registry[person_rg]" type="text" value="">
+		<input class="required litle rg" id="rg" name="registry[person_rg]" type="text" value="">
 			<br>
 				<label for="cpf">CPF:</label>
-				<input class="required mask-cpf litle" id="cpf" name="registry[person_cpf]" type="text" value="" />
+				<input class="required cpf litle" id="cpf" name="registry[person_cpf]" type="text" value="" />
 			</br>
 		</input>
 	</fieldset>
