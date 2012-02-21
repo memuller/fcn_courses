@@ -77,25 +77,25 @@
 	<fieldset id="endereco">
 		<legend>Endereço</legend>
 		<label for="cep">CEP:</label>
-		<input class="required mask-cep litle" id="cep" name="registry[person_address_cep]" type="text" value="">
+		<input class="required mask-cep litle" id="endereco_cep" name="registry[person_address_cep]" type="text" value="">
 			<div>
 				<label for="rua">Rua (Av. etc.):</label>
-				<input class="required" id="rua" name="registry[person_address_street]" type="text" value="">
+				<input class="required" id="endereco_rua" name="registry[person_address_street]" type="text" value="">
 					<label for="numero">Numero:</label>
-					<input class="required litle" id="numero" name="registry[person_address_number]" type="text" value="" />
+					<input class="required litle" id="endereco_numero" name="registry[person_address_number]" type="text" value="" />
 				</input>
 			</div>
 			<label for="complemento">Complemento:</label>
-			<input id="complemento" name="registry[person_address_complement]" type="text" value="">
+			<input id="endereco_complemento" name="registry[person_address_complement]" type="text" value="">
 			<label for="complemento">Bairro:</label>
-			<input id="complemento" name="registry[person_address_district]" type="text" value="">
+			<input id="endereco_bairro" name="registry[person_address_district]" type="text" value="">
 				<div>
-					<label for="endereco_uf">Estado:</label>
+					<label for="endereco_estado">Estado:</label>
 				</div>
-				<input class="required" id="endereco_uf" name="registry[person_address_state]" type="text">
+				<input class="required" id="endereco_estado" name="registry[person_address_state]" type="text">
 					<label for="cidade">Cidade:</label>
 				</input>
-				<input class="required" id="cidade" name="registry[person_address_city]" type="text" />
+				<input class="required" id="endereco_cidade" name="registry[person_address_city]" type="text" />
 			</input>
 		</input>
 	</fieldset>
