@@ -1,4 +1,7 @@
 <h2>Inscrição para o curso.</h2>
+<?php if (isset($success) && ! $success): ?>
+	<?php echo Presenter::render_partial('registry/registration_failure') ?>
+<?php endif ?>
 <form action="" id="registry" method="post">
 	<fieldset id="informacoes_pessoais">
 		<legend>Informações pessoais</legend>
