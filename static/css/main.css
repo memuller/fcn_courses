@@ -12,7 +12,6 @@
 		#registry fieldset{border-top:#ccc 1px solid;margin:10px;padding:10px 0;position:relative;}
 			#registry fieldset label{cursor:pointer;display:block;padding:0 10px;}
 			#registry fieldset input, #registry fieldset select, #waitee form div input{margin:5px 0;padding:5px;margin-left:10px;width:300px;}
-				
 			#registry fieldset .litle{width:200px;}
 			#registry fieldset legend{font-size:16px;position:relative;top:-5px;}
 		#registry #filiacao fieldset{float:left;width:299px;}
