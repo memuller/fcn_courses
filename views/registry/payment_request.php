@@ -10,7 +10,7 @@
 	<?php endif ?>
 
 	<p>
-		<h2>Dados para pagamento:</h2>
+		<h3>Dados para pagamento:</h3>
 		<ul>
 			<li> Valor: <?php printf("R$ %01.2f", floatval($class->signup_cost) ) ?>
 			<li> Banco: Santander - 033 </li>
@@ -46,29 +46,44 @@
 			
 		</li>		
 	</ul>
-	<p id="internet_banking">
-		<a href="#transfer">*Caso tenha feito transferência por internet banking</a>
-	</p>
 	
-	<form action="" method="" accept-charset="utf-8" id="payment">
-		<label for="envio">Selecione a imagem do comprovante de depósito</label>
-		<input type="file" name="envio" value="" id="envio">
+	<form <?php html_attributes(array( 'id' => 'payment-confirmation',
+		'action' => '', 'method' => 'post', 'enctype' => 'multipart/form-data', 'accept-charset' => 'utf8')) ?> >
+		
+		<div id="file-upload">
+			<label for="payment-confirmation[file]">
+				<?php _e("Selecione a imagem contendo o comprovante do dépósito:") ?>
+			</label>
+			<input type="file" name="payment-confirmation[file]">
+
+			<a href="#text-paste"><?php _e("fez uma transferência online?") ?></a>
+		</div>
+		
+		<div id="text-paste">
+			<label for="payment-confirmation[text]">
+				<?php _e("Insira o texto do comprovante no seguinte campo:") ?>
+				<br />
+				<small> <?php _e("você pode fazer isso facilmente copiando e colando o comprovante na página de confirmação de transferência do seu banco.") ?> </small>
+			</label>
+			<textarea name="payment-confirmation[text]" cols="40" rows="8"></textarea>
+			
+			<a href="#file-upload"><?php _e("escaneou ou fotografou o comprovante?") ?></a>
+			
+		</div>
+
+		<input <?php html_attributes(array ('value' => __('Enviar comprovante'), 'type' => 'submit', 'id' => 'submit')); ?> />
 	</form>
-	<form action="" method="" id="transfer">
-			<label for="name">Caso tenha feito transferência por internet banking, preencha o campo ao lado</label>
-			<textarea name="name" id="name" rows="8" cols="40"></textarea>
-	</form>
+
 	<hr />
 	<h3>Resumo do seu cadastro</h3>
-	<p>
-		<ul>
-			<li>Nome: <?php echo $registree->person_name ?> </li>
-			<li>Email: <?php echo $registree->person_email ?> </li>
-			<li>Curso: <?php echo $course->post_title ?></li>
+	<ul>
+		<li>Nome: <?php echo $registree->person_name ?> </li>
+		<li>Email: <?php echo $registree->person_email ?> </li>
+		<li>Curso: <?php echo $course->post_title ?></li>
 
-		</ul>
-	</p>
+	</ul>
 	<hr />
+	
 	<p>
 		<small>
 			*em caso de dúvidas e-mail: faleconosco@fcn.edu.br ou

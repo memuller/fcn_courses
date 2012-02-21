@@ -5,8 +5,8 @@ div.success{border-color:green;color:green;}
 /*form*/
 #waitee form div label{display:block;font-size:1.2em;margin-top:5px;cursor:pointer;}
 #waitee form div input{padding:5px;}
-#waitee form #submit, #registry #inscrever{background:#0883BE;border:none;color:#fff;cursor:pointer; font-size:1.2em; margin-top:10px;padding:10px;}
-#waitee form #submit:hover, #registry #inscrever:hover;{background:#003659;}
+#waitee form #submit, #registry #inscrever, #confirm #submit {background:#0883BE;border:none;color:#fff;cursor:pointer; font-size:1.2em; margin-top:10px;padding:10px;}
+#waitee form #submit:hover, #registry #inscrever:hover, #confirm #submit:hover {background:#003659;}
 
 #registry{margin-top:30px;}
 		#registry fieldset{border-top:#ccc 1px solid;margin:10px;padding:10px 0;position:relative;}
@@ -67,9 +67,10 @@ div.success{border-color:green;color:green;}
 			margin: 0 auto;
 			width: 85px;
 		}
-		#confirm #payment{background-color:#f2f2f2;clear:both;padding:10px;margin:10px 10px 20px 10px;}
-	#confirm #transfer{background-color:#f2f2f2;display: none;margin:20px 10px 20px 10px;}
-		#confirm #transfer label{float:left;line-height:24px;width:200px;text-align:center;}
-		#confirm #transfer textarea{padding:10px;margin:20px 0;}
-	#confirm #internet_banking a{font-size:11px;}
+		#confirm #payment-confirmation{background-color:#f2f2f2;clear:both;padding:10px;margin:10px 10px 20px 10px;}
+	#confirm #text-paste{background-color:#f2f2f2;display: none;margin:20px 10px 20px 10px;}
+		#confirm #text-paste label{float:left;line-height:24px;text-align:center;}
+		#confirm #text-paste textarea{padding:10px;margin:20px 0;}
+	#confirm #payment-confirmation a{font-size:11px;}
+	#confirm #payment-confirmation small{font-size:10px; font-style: italic; }
 	#confirm hr{display:block;clear:both;}
