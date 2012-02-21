@@ -16,7 +16,7 @@
 
 		public static function index(){
 			global $post ; 
-			return self::render_to_string('confirm/confirm', array('post' => $post)) ;		
+			return self::render_to_string('waiting_list/form', array('post' => $post)) ;		
 		}
 
 		public static function post(){
