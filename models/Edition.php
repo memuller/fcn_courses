@@ -63,6 +63,7 @@
 
 		function __construct($post=nil){
 			if($post){
+				if(is_numeric($post)) $post = get_post($post) ;
 				$this->post = $post ; 
 				foreach(get_post_custom($post->ID) as $field_name => $field_values){
 					if(isset(static::$fields[$field_name])){
