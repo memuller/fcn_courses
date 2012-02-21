@@ -8,7 +8,7 @@
 
 		static $fields = array(
 			'active' => array('required' => true,  'type' => 'boolean', 'default' => 1) ,
-			'course_id' => array('required' => true),
+			'course_id' => array('required' => true, 'type' => 'bigint(20) unsigned'),
 			'opted_in' => array('required' => true, 'type' => 'datetime', 'mechanized' => array('date', 'Y-m-d H:i:s'))
 		) ;
 

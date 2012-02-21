@@ -27,7 +27,7 @@
 	*/
 
 	# Sets db version.
-	$fcn_courses_db_version = '0.11' ;
+	$fcn_courses_db_version = '0.12' ;
 
 	# Sets base plugin path. With backslashes.
 	$plugin_path = plugin_dir_path(__FILE__) ;

@@ -8,7 +8,7 @@
 
 		static $fields = array(
 			'status' => array('required' => true, 'default' => 'pending') ,
-			'class_id' => array('required' => true),
+			'class_id' => array('required' => true, 'type' => 'bigint(20) unsigned'),
 			'signed_up' => array('required' => true, 'type' => 'datetime', 'mechanized' => array('date', 'Y-m-d H:i:s')),
 			'paid_up' => array('type' => 'datetime' )
 		) ;
