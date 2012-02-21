@@ -26,11 +26,11 @@
 
 		public static function post(){
 			if(wp_verify_nonce($_POST['nonce'], 'registree_signup')){
-				$class = new Edition() ;
+				$course = new Course ; $class = new Edition($_POST['registree']['class_id']) ; 
 				$registree = Registree::find_or_create($_POST['registree']) ;
 				if($registree->new_record){
-					print_r($_POST['registree']) ;
-					return self::render_to_string('registry/payment', array('registree' => $registree)) ;
+					return self::render_to_string('registry/payment_request', array(
+						'registree' => $registree, 'class' => $class, 'course' => $course, 'success' => true)) ;
 				} else {
 					return self::render_to_string('registry/form', array('class' => $class, 'success' => false)) ;
 				}

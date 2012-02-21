@@ -1,23 +1,26 @@
+<?php $first_name = explode(' ', $registree->person_name) ; $first_name = $first_name[0] ; ?>
 <div id="confirm">
-	<h3> Olá
-		<span>Nome do cara</span>
+
+	<h3>
+		<?php printf(__("Olá %s,"), "<span>$first_name</span>" ) ?>
 	</h3>
+
+	<?php if (isset($success) && $success ) : ?>
+		<?php echo Presenter::render_partial('registry/registration_successful', array('course' => $course)) ?>
+	<?php endif ?>
+
 	<p>
-		Você se cadastrou para o curso
-		<strong>Nome do curso</strong>
-		<br />
-		<br />
-		<strong>Dados para pagamento:</strong>
-		Banco: Santander - 033
-		<br />
-		Agencia: 0143
-		<br />
-		Conta Corrente: 13-003554-3
-		<br />
-		Razao Social: FAT - Fundaçao de Apoio a Tecnologia
-		<br />
-		CNPJ: 58.415.092/0001-50
+		<h2>Dados para pagamento:</h2>
+		<ul>
+			<li> Valor: <?php printf("R$ %01.2f", floatval($class->signup_cost) ) ?>
+			<li> Banco: Santander - 033 </li>
+			<li> Agencia: 0143 </li>
+			<li> Conta Corrente: 13-003554-3 </li>
+			<li> Razao Social: FAT - Fundaçao de Apoio a Tecnologia </li>
+			<li> CNPJ: 58.415.092/0001-50 </li>
+		</ul>
 	</p>
+
 	<ul id="steps">
 		<li class="info">
 			Sua inscrição ocorrerá em 3 etapas:
@@ -58,22 +61,15 @@
 	<hr />
 	<h3>Resumo do seu cadastro</h3>
 	<p>
-		<strong>Nome:</strong>
-		Nome do anima;
-		<br />
-		<strong>Email</strong>
-		dfaspfoijsadfpoaisjdf
-		<br />
-		<strong>Curso</strong>
-		DSpdoiasjdoaijfposij
+		<ul>
+			<li>Nome: <?php echo $registree->person_name ?> </li>
+			<li>Email: <?php echo $registree->person_email ?> </li>
+			<li>Curso: <?php echo $course->post_title ?></li>
+
+		</ul>
 	</p>
 	<hr />
 	<p>
-		<small>
-			*essas informações foram enviadas para o @email ('.
-			$values['e-mail'] .')
-		</small>
-		<br />
 		<small>
 			*em caso de dúvidas e-mail: faleconosco@fcn.edu.br ou
 			Telefone: (12) 3186 2000
