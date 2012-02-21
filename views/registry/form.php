@@ -12,7 +12,7 @@
 				<label class="error" for="sexo" style="display:none;">Por favor selecione o sexo.</label>
 			</div>
 			<label for="data_nascimento">Data de nascimento:</label>
-			<input class="required inlineDatePicker litle" id="data_nascimento" name="registry[person_birthdate]" type="text" value="">
+			<input class="required litle" id="data_nascimento" name="registry[person_birthdate]" type="text" value="">
 				<div id="">
 					<label for="naturalidade">Natural de:</label>
 					<input class="required litle" id="naturalidade0" name="naturalidade" type="text" value="">

@@ -1,5 +1,4 @@
 jQuery(document).ready( function($) {
-	$('.inlineDatePicker').datepick() ;
 
 	$('input#cep').on('keyup', function(event){
 		if($(this)[0].value.length >= 8){
