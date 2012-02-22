@@ -11,7 +11,8 @@
 			'class_id' => array('required' => true, 'type' => 'bigint(20) unsigned'),
 			'signed_up' => array('required' => true, 'type' => 'datetime', 'mechanized' => array('date', 'Y-m-d H:i:s')),
 			'paid_up' => array('type' => 'datetime' ),
-			'payment_receipt' => array('type' => 'text') 
+			'payment_receipt' => array('type' => 'text') ,
+			'pays' => array('type' => 'tinyint(1)', 'required' => true ,'default' => 1)
 		) ;
 
 		static $compound_indexes = array(
