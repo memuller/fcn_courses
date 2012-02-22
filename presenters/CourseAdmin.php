@@ -3,8 +3,8 @@
 	class CourseAdminPresenter {
 
 		static function collumn_headers($collumns){
-			if(! isset($collumns['waitee'])) $collumns['waitee'] = 'Waiting List' ;
-			if(! isset($collumns['classes'])) $collumns['classes'] = 'Classes' ;
+			if(! isset($collumns['waitee'])) $collumns['waitee'] = 'Lista de espera' ;
+			if(! isset($collumns['classes'])) $collumns['classes'] = 'Turmas' ;
 			return $collumns ;
 		}
 		
@@ -27,7 +27,7 @@
 		}
 
 		static function waiting_list_page(){
-			add_submenu_page('edit.php?post_type=courses', 'Waiting List', 'Waiting Lists',  
+			add_submenu_page('edit.php?post_type=courses', 'Lista de Espera', 'Listas de Espera',  
 				'edit_posts', 'waiting_list', 'FCN\WaitingListPresenter::present' ); 
 		}
 

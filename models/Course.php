@@ -5,25 +5,25 @@
 
 		static $name = "courses" ;
 		static $creation_fields = array( 
-			'label' => 'Courses','description' => 'Courses applied by FCN.',
+			'label' => 'Curso','description' => 'Cursos aplicados pela FCN.',
 			'public' => true,'show_ui' => true,'show_in_menu' => true,'capability_type' => 'post',
 			'hierarchical' => true,'rewrite' => array('slug' => ''),'query_var' => true,
-			'supports' => array('title','editor','excerpt','trackbacks','custom-fields',
+			'supports' => array('title','editor', 'excerpt', 'trackbacks','custom-fields',
 				'comments','revisions','thumbnail'),
 			'labels' => array (
-				'name' => 'Courses',
-				'singular_name' => 'Course',
-				'menu_name' => 'Courses',
-				'add_new' => 'Add Course',
-				'add_new_item' => 'Add New Course',
-				'edit' => 'Edit',
-				'edit_item' => 'Edit Course',
-				'new_item' => 'New Course',
-				'view' => 'View Course',
-				'view_item' => 'View Course',
-				'search_items' => 'Search Courses',
-				'not_found' => 'No Courses Found',
-				'not_found_in_trash' => 'No Courses Found in Trash',
+				'name' => 'Cursos',
+				'singular_name' => 'Curso',
+				'menu_name' => 'Cursos',
+				'add_new' => 'Adicionar Curso',
+				'add_new_item' => 'Adicionar Novo Curso',
+				'edit' => 'Editar',
+				'edit_item' => 'Editar Curso',
+				'new_item' => 'Novo Curso',
+				'view' => 'Ver',
+				'view_item' => 'Ver Curso',
+				'search_items' => 'Buscar Curso',
+				'not_found' => 'Nenhum curso encontrado',
+				'not_found_in_trash' => 'Nenhum curso encontrado na lixeira.',
 				'parent' => 'Parent Course'
 			)
 		) ;

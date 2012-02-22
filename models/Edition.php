@@ -5,25 +5,25 @@
 
 		static $name = "classes" ;
 		static $creation_fields = array( 
-			'label' => 'Classes','description' => "Classes os FCN's courses.",
+			'label' => 'Turma', 'description' => 'Turma em um curso de extensão da FCN.',
 			'public' => true,'show_ui' => true,'show_in_menu' => true,'capability_type' => 'post',
 			'hierarchical' => true,  'rewrite' => array('slug' => ''),'query_var' => true,
 			'supports' => array('custom-fields'),
 			'labels' => array (
-				'name' => 'Classes',
-				'singular_name' => 'Class',
-				'menu_name' => 'Classes',
-				'add_new' => 'Add Class',
-				'add_new_item' => 'Add New Class',
-				'edit' => 'Manage',
-				'edit_item' => 'Manage Class',
-				'new_item' => 'New Class',
-				'view' => 'View Class',
-				'view_item' => 'View Class',
-				'search_items' => 'Search Classes',
-				'not_found' => 'No Classes Found',
-				'not_found_in_trash' => 'No Classes Found in Trash',
-				'parent_item_colon' => 'Course: '
+				'name' =>  'Turmas' ,
+				'singular_name' => 'Turma',
+				'menu_name' => 'Turmas',
+				'add_new' => 'Criar Turma',
+				'add_new_item' => 'Criar nova Turma',
+				'edit' => 'Gerenciar',
+				'edit_item' => 'Gerenciar Turma',
+				'new_item' => 'Nova Turma',
+				'view' => 'Ver Turma',
+				'view_item' => 'Ver Turma',
+				'search_items' => 'Buscar Turmas',
+				'not_found' => 'Nenhuma turma encontrada',
+				'not_found_in_trash' => 'Nenhuma turma encontrada na lixeira.',
+				'parent_item_colon' => 'Curso: '
 			)
 		) ;
 		static $fields = array(

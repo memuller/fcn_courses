@@ -102,6 +102,7 @@
 	function fcn_backend_styles(){
 		global $plugin_url ;
 		wp_enqueue_style('jquery-datepick', plugins_url('static/js/jquery-datepick/jquery.datepick.css', __FILE__)) ;
+		wp_enqueue_style('classes', plugins_url('static/css/admin_classes.css', __FILE__)) ;
 	}
 
 	function fcn_backend_scripts(){

@@ -44,10 +44,10 @@
 	}
 
 		static function build(){
-			add_action('add_meta_boxes', function() { add_meta_box('class-info', 'Class information', "FCN\EditionAdminPresenter::class_metabox", 
+			add_action('add_meta_boxes', function() { add_meta_box('class-info', 'Informações da Turma', "FCN\EditionAdminPresenter::class_metabox", 
 				'classes', 'side', 'high');});
 
-			add_action('add_meta_boxes', function() { add_meta_box('class-signup', 'Signup information', "FCN\EditionAdminPresenter::signup_metabox", 
+			add_action('add_meta_boxes', function() { add_meta_box('class-signup', 'Inscrições', "FCN\EditionAdminPresenter::signup_metabox", 
 				'classes', 'side', 'high');});
 			
 			add_action('save_post','FCN\EditionAdminPresenter::save') ;
