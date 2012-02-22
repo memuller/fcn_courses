@@ -72,6 +72,11 @@
 		</div>
 
 		<input <?php html_attributes(array ('value' => __('Enviar comprovante'), 'type' => 'submit', 'id' => 'submit')); ?> />
+
+		<?php // control fields ?>
+		<input <?php html_attributes(array ('name' => 'action', 'value' => 'payment_confirmation', 'type' => 'hidden')); ?> />
+		<input <?php html_attributes(array ('name' => 'payment-confirmation[registree_id]', 'value' => $registree->id, 'type' => 'hidden')); ?> />
+		<input <?php html_attributes(array ('name' => 'nonce', 'value' => wp_create_nonce('payment_confirmation'), 'type' => 'hidden')); ?> />
 	</form>
 
 	<hr />
