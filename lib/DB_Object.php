@@ -129,6 +129,12 @@
 		}
 
 		function __construct($values, $save = true){
+			global $wpdb ;
+			if(is_numeric($values)){
+				$save = false ; 
+				$sql = $wpdb->prepare("select * from ".static::table_name()." where id = %d", $values) ;
+				$values = $wpdb->get_row($sql, ARRAY_A) ;
+			}
 			$this->creation_parameters = $values ; 		 
 			if($save === true){
 				$this->persist();
