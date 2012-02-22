@@ -1,9 +1,8 @@
 jQuery(document).ready( function($) {
 
 	// Masks: personal information and phones
-	$('#data_nascimento').mask('99/99/99') ;
+	$('#data_nascimento').mask('99/99/9999') ;
 	$('#cpf').mask('999.999.999-99') ;
-	$('#rg').mask('99 999-999');
 	$('#tel_fixo').mask('(99) 9999-9999') ;
 	$('#celular').mask('(99) 9999-9999') ;
 
