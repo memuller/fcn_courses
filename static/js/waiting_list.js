@@ -1,11 +1,8 @@
 jQuery(document).ready(function($) {
-	//do validate for waiting list
-	$("form#registry").validate({
-		rules:{
-			mail:{
-				required:true,
-				email:true
-			}
-		}
-	});
+
+	// Masks phone number.
+	$('#waitee_phone').mask('(99) 9999-9999') ;
+
+	// Validations: follows validations rules set on each field's 'class' property.
+	$("#waitee form").validate();
 });

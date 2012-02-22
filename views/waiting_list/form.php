@@ -19,19 +19,19 @@
 			<label for="waitee[person_name]" >
 				Nome *
 			</label>
-			<input <?php html_attributes(array ('name' => 'waitee[person_name]', 'id' => 'waitee[person_name]', 'type' => 'text')); ?> />
+			<input <?php html_attributes(array ('name' => 'waitee[person_name]', 'id' => 'waitee_name]', 'type' => 'text', 'class' => 'required')); ?> />
 		</div>
 		<div class="field">
 			<label for="waitee[person_email]" >
 				Email *
 			</label>
-			<input <?php html_attributes(array ('name' => 'waitee[person_email]', 'id' => 'waitee[person_email]', 'type' => 'text')); ?> />
+			<input <?php html_attributes(array ('name' => 'waitee[person_email]', 'id' => 'waitee_email]', 'type' => 'text', 'class' => 'required email')); ?> />
 		</div>
 		<div class="field">
 			<label for="waitee[person_phone]">
 				Telefone
 			</label>
-			<input<?php html_attributes(array ('name' => 'waitee[person_phone]', 'id' => 'waitee[person_phone]', 'type' => 'text')); ?> />
+			<input<?php html_attributes(array ('name' => 'waitee[person_phone]', 'id' => 'waitee_phone', 'type' => 'text', 'class' => 'required')); ?> />
 		</div>
 		
 		<input <?php html_attributes(array ('value' => 'Inscrever', 'type' => 'submit', 'id' => 'submit')); ?> />
