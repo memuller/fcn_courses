@@ -9,7 +9,7 @@
 			'public' => true,'show_ui' => true,'show_in_menu' => true,'capability_type' => 'post',
 			'hierarchical' => true,'rewrite' => array('slug' => ''),'query_var' => true,
 			'supports' => array('title','editor', 'excerpt', 'trackbacks','custom-fields',
-				'comments','revisions','thumbnail'),
+				'revisions','thumbnail'),
 			'labels' => array (
 				'name' => 'Cursos',
 				'singular_name' => 'Curso',
