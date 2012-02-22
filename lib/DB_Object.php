@@ -111,6 +111,9 @@
 				if($field_options['unique']){
 					$key_definitions[]= "unique key $field_name ($field_name)" ; 
 				}
+				if($field_options['index']){
+					$key_definitions[]= "index $field_name ($field_name)" ; 
+				}
 			}
 			if(isset(static::$compound_indexes)){
 				foreach (static::$compound_indexes as $index => $fields) {
