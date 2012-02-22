@@ -73,9 +73,9 @@
 		<label for="mail">E-mail:</label>
 		<input class="required email" id="mail_mail" name="registree[person_email]" type="text" value="">
 			<label for="tel_fixo">Telefone:</label>
-			<input class="required mask-fone litle" id="tel_fixo" name="registree[person_phone]" type="text" value="">
+			<input class="required litle" id="tel_fixo" name="registree[person_phone]" type="text" value="">
 				<label for="celular">Celular:</label>
-				<input class="required litle" id="celular" name="registree[person_mobile]" type="text" value="" />
+				<input class="litle" id="celular" name="registree[person_mobile]" type="text" value="" />
 			</input>
 		</input>
 	</fieldset>
@@ -87,7 +87,7 @@
 				<label for="rua">Rua (Av. etc.):</label>
 				<input class="required" id="endereco_rua" name="registree[person_address_street]" type="text" value="">
 					<label for="numero">Numero:</label>
-					<input class="required litle" id="endereco_numero" name="registree[person_address_number]" type="text" value="" />
+					<input class="required digits litle" id="endereco_numero" name="registree[person_address_number]" type="text" value="" />
 				</input>
 			
 				<label for="complemento">Complemento:</label>
