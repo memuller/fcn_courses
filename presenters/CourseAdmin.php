@@ -21,7 +21,9 @@
 						<?php if($open = $class->accepts_signups()) { ?> <b> <?php } ?>
 							<a href="<?php echo admin_url("post.php?post=$class->ID&action=edit") ?>"><?php echo $class->post_title ?></a>
 						<?php if($open) { ?> </b> <?php } ?>
-					<?php }
+					<?php } ?>
+					<em><a style="padding-left: 1em;"href="<?php echo admin_url("post-new.php?post_type=classes&parent_course=$course->ID") ?>"> Criar Nova</a></em>
+					<?php 
 					break;
 			}
 		}
