@@ -38,18 +38,17 @@ div.success{border-color:green;color:green;}
 			color:#fff;
 			float:left;
 			margin:10px 5px 20px 5px;
-			height:110px;
+			height:120px;
 			text-align:center;
-			width:110px;
+			width:120px;
 		}
-		#confirm #steps li.info, #confirm #transfer label{
+		#confirm #steps li.info, #payment-confirmation #text-paste label{
 			background: none repeat scroll 0 0 transparent;
     		color: #444444;
     		font-family: Georgia;
-    		font-family: Georgia;
     		font-size: 18px;
     		font-style: italic;
-    		margin: 30px 20px 0 10px;
+    		margin: 44px 20px 0 10px;
 		}
 		#confirm #steps li.one{background-color:;}
 		#confirm #steps li.due{background-color:#7BB247;}
@@ -65,13 +64,15 @@ div.success{border-color:green;color:green;}
 		#confirm #steps li p{
 			font-size: 11px;
 			line-height: 14px;
-			margin: 0 auto;
-			width: 85px;
+			margin: 5px auto;
+			width: 100px;
 		}
+		#confirm #payment-confirmation a{display:block;}
 		#confirm #payment-confirmation{background-color:#f2f2f2;clear:both;padding:10px;margin:10px 10px 20px 10px;}
-	#confirm #text-paste{background-color:#f2f2f2;display: none;margin:20px 10px 20px 10px;}
-		#confirm #text-paste label{float:left;line-height:24px;text-align:center;}
-		#confirm #text-paste textarea{padding:10px;margin:20px 0;}
+	#confirm #text-paste{background-color:#f2f2f2;display:none;}
+		#payment-confirmation #text-paste label{float:left; font-size:22px;line-height:20px;margin:10px 20px 0 0 ;text-align:center;width:200px;}
+			#payment-confirmation #text-paste label small{display:block;line-height:13px;margin-top:22px;}
+		#payment-confirmation #text-paste textarea{padding:10px;margin:10px 0;}
 	#confirm #payment-confirmation a{font-size:11px;}
 	#confirm #payment-confirmation small{font-size:10px; font-style: italic; }
 	#confirm hr{display:block;clear:both;}

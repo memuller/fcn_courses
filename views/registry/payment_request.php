@@ -11,14 +11,12 @@
 
 	<p>
 		<h3>Dados para pagamento:</h3>
-		<ul>
-			<li> Valor: <?php printf("R$ %01.2f", floatval($class->signup_cost) ) ?>
-			<li> Banco: Santander - 033 </li>
-			<li> Agencia: 0143 </li>
-			<li> Conta Corrente: 13-003554-3 </li>
-			<li> Razao Social: FAT - Fundaçao de Apoio a Tecnologia </li>
-			<li> CNPJ: 58.415.092/0001-50 </li>
-		</ul>
+			Valor: <?php printf("R$ %01.2f", floatval($class->signup_cost) ) ?><br/>
+			Banco: Santander - 033<br/>
+			Agencia: 0143<br/>
+			Conta Corrente: 13-003554-3 <br/>
+			Razao Social: FAT - Fundaçao de Apoio a Tecnologia<br/>
+			CNPJ: 58.415.092/0001-50
 	</p>
 
 	<ul id="steps">
@@ -46,7 +44,9 @@
 			
 		</li>		
 	</ul>
-	
+	<p>
+		
+	</p>
 	<form <?php html_attributes(array( 'id' => 'payment-confirmation',
 		'action' => '', 'method' => 'post', 'enctype' => 'multipart/form-data', 'accept-charset' => 'utf8')) ?> >
 		
@@ -56,7 +56,7 @@
 			</label>
 			<input type="file" name="payment-confirmation[file]">
 
-			<a href="#text-paste"><?php _e("fez uma transferência online?") ?></a>
+			<a href="#payment-confirmation"><?php _e("* Você deseja pagar através de transferência online?") ?></a>
 		</div>
 		
 		<div id="text-paste">
@@ -67,7 +67,7 @@
 			</label>
 			<textarea name="payment-confirmation[text]" cols="40" rows="8"></textarea>
 			
-			<a href="#file-upload"><?php _e("escaneou ou fotografou o comprovante?") ?></a>
+			<a href="#payment-confirmation"><?php _e("escaneou ou fotografou o comprovante?") ?></a>
 			
 		</div>
 
@@ -80,13 +80,13 @@
 	</form>
 
 	<hr />
-	<h3>Resumo do seu cadastro</h3>
-	<ul>
-		<li>Nome: <?php echo $registree->person_name ?> </li>
-		<li>Email: <?php echo $registree->person_email ?> </li>
-		<li>Curso: <?php echo $course->post_title ?></li>
-
-	</ul>
+	<p>
+		<h3>Resumo do seu cadastro</h3>
+		Nome: <?php echo $registree->person_name ?><br/>
+		Email: <?php echo $registree->person_email ?><br/>
+		Curso: <?php echo $course->post_title ?>
+	</p>
+	
 	<hr />
 	
 	<p>
