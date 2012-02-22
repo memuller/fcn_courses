@@ -1,0 +1,2 @@
+<?php echo "Seu comprovante foi enviado com sucesso." ?>
+<?php  echo "Nossa equipe confirmará seu pagamento; e você será notificado por email quando sua inscrição no curso de $course->post_title estiver concluída." ?>
