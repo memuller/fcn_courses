@@ -112,6 +112,11 @@
 					$key_definitions[]= "unique key $field_name ($field_name)" ; 
 				}
 			}
+			if(isset(static::$compound_indexes)){
+				foreach (static::$compound_indexes as $index => $fields) {
+					$key_definitions[]= sprintf("$index key (%s)", implode(',', $fields)) ;
+				}
+			}
 			$sql = sprintf("CREATE TABLE %s (
 				%s ,
 				%s
