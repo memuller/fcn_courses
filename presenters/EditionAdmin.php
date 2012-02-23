@@ -3,6 +3,13 @@
 	use Presenter ;
 	class EditionAdminPresenter extends Presenter {
 
+	static function registrees_metabox($post){
+		global $plugin_path ;
+		require_once($plugin_path .'views/admin/manage_registrees.php') ;
+		$table = new ManageRegistrees();
+		$table->prepare_items();
+		$table->display();
+	}
 	static function class_metabox($post) {
 		$post_type_object = get_post_type_object($post->post_type);
 		if ( $post_type_object->hierarchical ) {
@@ -44,6 +51,10 @@
 	}
 
 		static function build(){
+
+			add_action('add_meta_boxes', function() { add_meta_box('class-registrees', 'Inscrições', "FCN\EditionAdminPresenter::registrees_metabox", 
+				'classes', 'normal', 'core');});
+
 			add_action('add_meta_boxes', function() { add_meta_box('class-info', 'Informações da Turma', "FCN\EditionAdminPresenter::class_metabox", 
 				'classes', 'side', 'high');});
 
