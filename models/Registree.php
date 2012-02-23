@@ -7,7 +7,7 @@
 		static $table_sufix = 'fcn_registree' ;
 
 		static $fields = array(
-			'status' => array('required' => true, 'default' => 'pending', 'type' => 'enum', 'values' => array('pending','validating','valid','invalid'), 'index' => true) ,
+			'status' => array('required' => true, 'default' => 'pending', 'type' => 'enum', 'values' => array('validating','pending','valid','invalid'), 'index' => true) ,
 			'class_id' => array('required' => true, 'type' => 'bigint(20) unsigned'),
 			'signed_up' => array('required' => true, 'type' => 'datetime', 'mechanized' => array('date', 'Y-m-d H:i:s')),
 			'paid_up' => array('type' => 'datetime' ),
