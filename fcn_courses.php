@@ -41,6 +41,11 @@
 	require_once 'lib/Presenter.php' ;
 	require_once 'lib/DB_Object.php' ;
 
+	//Our class extends the WP_List_Table class, so we need to make sure that it's there
+	if(!class_exists('WP_List_Table')){
+		require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
+	}
+
 	# Requires models and presenters.
 	require_once 'models/Course.php' ; FCN\Course::build() ; 
 	require_once 'models/Edition.php' ; FCN\Edition::build() ;
