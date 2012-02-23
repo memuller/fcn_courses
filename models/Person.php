@@ -23,6 +23,7 @@
 			'address_district' => array(),
 			'address_city' => array(),
 			'address_state' => array('size' => 2),
+			'address_zip' => array('size' => 12),
 			'disability' => array('type' => 'set', 'values' => array('hearing', 'seeing', 'motion', 'other'))
 
 		) ;
