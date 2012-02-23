@@ -60,6 +60,7 @@
 			$course = get_post($_POST['parent_id']) ;
 			foreach(Edition::$fields as $field_name => $field_options){
 				if(! empty($_POST[$field_name])){
+					if($field_name == 'signup_cost') $_POST['signup_cost'] = preg_replace("/[^0-9]/", "", $_POST['signup_cost'] ) ;
 					update_post_meta($post_id, $field_name, $_POST[$field_name]) ;
 				}
 			}
