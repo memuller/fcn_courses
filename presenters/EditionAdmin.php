@@ -45,6 +45,18 @@
 		if( defined(DOING_AUTOSAVE) && DOING_AUTOSAVE) return ;
 		
 		if($_POST['post_type'] == 'classes'){
+
+			if(isset($_POST['registree_payment_change'])){
+				$arr = explode('_', $_POST['registree_payment_change']) ;
+				$verb = $arr[0] ; $registree = new Registree($arr[3]) ;
+				
+				if($verb == 'accept'){
+					$registree->status = 'valid' ; $registree->persist() ;
+				} else {
+					$registree->status = 'invalid' ; $registree->persist() ;
+				}
+			}
+
 			$course = get_post($_POST['parent_id']) ;
 			foreach(Edition::$fields as $field_name => $field_options){
 				if(! empty($_POST[$field_name])){
@@ -52,6 +64,10 @@
 				}
 			}
 		}
+	}
+
+	static function payment_confirmation_form($registree){
+		return static::render_to_string('admin/payment_confirmation_form', array('registree' => $registree)) ;
 	}
 
 		static function build(){
