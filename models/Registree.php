@@ -21,7 +21,14 @@
 
 		static $belongs_to = 'person' ; 
 		public $id, $status, $course_id, $signed_up, $paid_up ;
-		
+
+		function receipt(){
+			if(strpos($this->payment_receipt, 'http://') !== false){
+				return "<img src='$this->payment_receipt' width='600px' >" ;
+			} else {
+				return $this->payment_receipt ;
+			}
+		}
 	}
 
 ?>
