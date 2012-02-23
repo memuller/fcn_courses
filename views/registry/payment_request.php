@@ -44,9 +44,6 @@
 			
 		</li>		
 	</ul>
-	<p>
-		
-	</p>
 	<form <?php html_attributes(array( 'id' => 'payment-confirmation',
 		'action' => '', 'method' => 'post', 'enctype' => 'multipart/form-data', 'accept-charset' => 'utf8')) ?> >
 		
