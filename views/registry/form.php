@@ -82,7 +82,7 @@
 	<fieldset id="endereco">
 		<legend>Endereço</legend>
 		<label for="cep">CEP:</label>
-		<input class="required mask-cep litle" id="endereco_cep" name="registree[person_address_cep]" type="text" value="">
+		<input class="required mask-cep litle" id="endereco_cep" name="registree[person_address_zip]" type="text" value="">
 			<div id="address_fields">
 				<label for="rua">Rua (Av. etc.):</label>
 				<input class="required" id="endereco_rua" name="registree[person_address_street]" type="text" value="">
