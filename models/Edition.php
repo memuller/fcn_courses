@@ -55,6 +55,10 @@
 		}
 
 		function accepts_signups(){
+			return $this->in_time_for_signups() ;
+		}
+
+		function in_time_for_signups(){
 			$now = new DateTime('now');
 			$in_time = $this->datetime('signup_start_date') <= $now && $this->datetime('signup_end_date') >= $now ; 
 			
