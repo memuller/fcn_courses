@@ -116,6 +116,8 @@
 		wp_enqueue_script('jquery-datepick', plugins_url('static/js/jquery-datepick/jquery.datepick.js', __FILE__), array('jquery')) ;
 		wp_enqueue_script('jquery-datepick-br', plugins_url('static/js/jquery-datepick/jquery.datepick-pt-BR.js', __FILE__), 
 			array('jquery', 'jquery-datepick'))  ;
+		wp_enqueue_script('jquery-colorbox', plugins_url('static/js/jquery-colorbox/jquery.colorbox-min.js', __FILE__), 
+			array('jquery')  ;
 		wp_enqueue_script('edition_admin', plugins_url('static/js/edition_admin.js', __FILE__), array('jquery-datepick-br')) ;
 	}
 
