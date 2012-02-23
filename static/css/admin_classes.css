@@ -1,0 +1,8 @@
+.column-registree_status { width: 150px; }
+.column-registree_information { width: 60%; }
+
+.box-registree_receipt { display: none ; padding-bottom: 30px; }
+	.box-registree_receipt h3 { padding: 7px 10px ; font-family: Georgia,"Times New Roman","Bitstream Charter",Times,serif ; font-weight: normal ; }
+	.box-registree_receipt .inside { background-color: white; margin: 5px 5px 5px 5px ;}
+	.box-registree_receipt .button-primary { float: right ; margin-right: 3px ; }
+	.box-registree_receipt .button-secundary { float: left ; margin-left: 3px ;}

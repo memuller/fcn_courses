@@ -15,7 +15,7 @@
 <div id="price">
 	<?php echo "Preço:" ?>
 	<strong>
-		<input type="text" name="signup_cost" size="5" value="<?php echo $edition->signup_cost ?>">
+		R$ <input type="text" name="signup_cost" size="5" value="<?php echo $edition->signup_cost ?>">
 	</strong>
 </div>
 

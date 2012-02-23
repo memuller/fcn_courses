@@ -55,10 +55,25 @@
 		}
 
 		function accepts_signups(){
+			return $this->in_time_for_signups() ;
+		}
+
+		function in_time_for_signups(){
 			$now = new DateTime('now');
 			$in_time = $this->datetime('signup_start_date') <= $now && $this->datetime('signup_end_date') >= $now ; 
 			
 			return (bool)$in_time ; 
+		}
+
+		function registrees(){
+			global $wpdb ; $registrees = array() ;
+			$sql = "select * from " . Registree::table_name() . " registree inner join ". Person::table_name() . " person 
+				on person_id = person.id where class_id = $this->ID" ;
+			foreach ($wpdb->get_results($sql, ARRAY_A) as $registree) {
+				$registrees[]= new Registree($registree, false) ;
+			}
+
+			return $registrees ;
 		}
 
 		function __construct($post=nil){

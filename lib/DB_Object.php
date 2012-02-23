@@ -139,11 +139,26 @@
 			if($save === true){
 				$this->persist();
 			} else {
+				if(isset(static::$belongs_to)) $parent_fields = array();
 				foreach ($this->creation_parameters as $k => $v) {
-					$this->$k = $v ; 			
+					if(isset(static::$belongs_to) && static::is_parent_field($k)){ 
+						$parent_fields[$k]= $v ;
+					} else {
+						$this->$k = $v ;
+					}
+				}
+				if(isset(static::$belongs_to)){
+					$fk_name = static::$belongs_to . '_id' ;
+					$property_name = static::$belongs_to ; $parent_class = static::belongs_to_class_name() ;
+					$this->$property_name = !empty($parent_fields) ? new $parent_class($parent_fields) : new $parent_class($this->$fk_name);
 				}
 				$this->new_record = false ; 
 			}
+		}
+
+		static function is_parent_field($field){
+			$parent_class = static::belongs_to_class_name() ;
+			return in_array($field, array_keys($parent_class::$fields)) ;
 		}
 
 		static public function find_or_create($args){
@@ -185,7 +200,7 @@
 			if($obj){
 				return new static($obj, false) ;
 			} else {
-				return new static($args) ;
+				return new static($args, true) ;
 			}
 		}
 

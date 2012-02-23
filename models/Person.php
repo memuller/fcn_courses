@@ -29,7 +29,19 @@
 
 		static $has_many = 'waitee' ;
 		public $name, $email, $phone, $id, $registered_in ; 
-		
+
+		function first_name(){
+			$broken_name = explode(' ', $this->name) ;
+			return $broken_name[0] ;
+		}
+
+		function address(){
+			$complement = !empty($this->address_complement) ? "($this->address_complement)" : "" ;
+			return sprintf("%s, %s %s, %s - %s/%s - %s",
+				$this->address_street, $this->address_number, $complement, $this->address_district,
+				$this->address_city, $this->address_state, $this->address_zip 
+			);
+		}		
 	}
 
 ?>
