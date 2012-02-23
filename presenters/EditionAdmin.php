@@ -5,10 +5,14 @@
 
 	static function registrees_metabox($post){
 		global $plugin_path ;
-		require_once($plugin_path .'views/admin/manage_registrees.php') ;
-		$table = new ManageRegistrees();
-		$table->prepare_items();
-		$table->display();
+		if(!empty($post->post_title) && $post->title != __('Auto Draft')){
+			require_once($plugin_path .'tables/manage_registrees.php') ;
+			$table = new ManageRegistrees();
+			$table->prepare_items();
+			$table->display();
+		} else {
+			_e("Conclua o cadastro desta turma antes de gerenciar inscrições.") ;
+		}
 	}
 	static function class_metabox($post) {
 		$post_type_object = get_post_type_object($post->post_type);

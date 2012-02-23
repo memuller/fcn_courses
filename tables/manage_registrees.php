@@ -6,8 +6,8 @@
 
 		function __construct(){
 			parent::__construct(array(
-				'singular' => 'fcn_course_registree',
-				'plural' => 'fcn_course_registrees',
+				'singular' => 'registree',
+				'plural' => 'registrees',
 				'ajax' => false
 			)) ;
 		}
@@ -15,7 +15,7 @@
 		function extra_tablenav($position){
 			
 			if($position == 'top'){
-
+				
 			}
 
 			if($position == 'bottom'){
