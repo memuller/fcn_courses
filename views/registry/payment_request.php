@@ -12,11 +12,10 @@
 	<p>
 		<h3>Dados para pagamento:</h3>
 			Valor: <?php printf("R$ %01.2f", floatval($class->signup_cost) ) ?><br/>
-			Banco: Santander - 033<br/>
-			Agencia: 0143<br/>
-			Conta Corrente: 13-003554-3 <br/>
-			Razao Social: FAT - Fundaçao de Apoio a Tecnologia<br/>
-			CNPJ: 58.415.092/0001-50
+			Banco do Brasil<br/>
+			Agencia: 3358-8<br/>
+			Conta Corrente: 5.894-7 <br/>
+			Favorecido: Fundação João Paulo II.
 	</p>
 
 	<ul id="steps">
@@ -26,20 +25,20 @@
 		<li class="one">
 			<span>Passo 1</span>
 			<p>
-				Faça um depósito na conta informada com o valor de inscrição
+				Deposite ou transfira para a conta informada o valor da inscrição.
 			</p>
 		</li>
 		<li class="due">
 			<span>Passo 2</span>
 			<p>
-				Escaneie ou tire uma fotografia do comprovante de depósito.*
+				Escaneie|Fotografe ou copie as informações do comprovante de depósito*
 			</p>
 			
 		</li>
 		<li class="tre">
 			<span>Passo 3</span>
 			<p>
-				Envie esse arquivo no formulário abaixo.
+				Envie a imagem do comprovante ou o cole as informações de confirmação da transferência.
 			</p>
 			
 		</li>		
