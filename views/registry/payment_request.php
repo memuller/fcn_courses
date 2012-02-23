@@ -94,5 +94,7 @@
 		<small>
 			*pressione ctrl+p para imprimir esse comprovante.
 		</small>
+		<br>
+		<small>*Para solucionar qualquer dúvida, guarde com você o comprovante de depósito.</small>
 	</p>
 </div>
