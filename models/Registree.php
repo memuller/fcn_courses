@@ -32,7 +32,7 @@
 
 		function payment_url(){
 			$class = new Edition($this->class_id) ; $course = new Course($class->course_id) ;
-			return get_permalink($course->ID) . "&payment_for=$this->person->email" ;
+			return get_permalink($course->ID) . "&payment_for=".$this->person->email ;
 		}
 	}
 
