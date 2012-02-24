@@ -4,7 +4,7 @@
 	<?php echo Presenter::render_partial('registry/registration_failure') ?>
 <?php endif ?>
 
-<form action="" id="registry" method="post">
+<form action="#confirm" id="registry" method="post">
 	<fieldset id="informacoes_pessoais">
 		<legend>Informações pessoais</legend>
 		<label for="nome">Nome:</label>
