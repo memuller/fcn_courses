@@ -166,9 +166,6 @@
 			$clausule = static::unique_field_where_clausule() ;
 
 			if(isset(static::$belongs_to)) {
-				if(sizeof($args) == sizeof(static::unique_field())){
-					$param = $args ;
-				} else {
 					$param = array(); $key_class = static::belongs_to_class_name() ; $key_creation_args = array();
 					foreach (static::unique_field() as $field_name) {
 						$param[$field_name]= $args[$field_name] ;
@@ -184,7 +181,7 @@
 					$key = $key_class::find_or_create($key_creation_args) ;
 					$param[$belongs_to_fk_name] = $key->id ; 
 
-				}
+				
 				$sql = vsprintf("select * from ".static::table_name()." where $clausule", $param) ;
 			} else {
 				if( is_array($args)){
@@ -212,6 +209,7 @@
 				$key_class_fields = array() ; $local_fields_from_key = array();
 				$key_class = static::belongs_to_class_name() ;
 				$fk_field = static::$belongs_to."_id" ;
+				$property_name = static::$belongs_to ;
 				
 				if(!isset($this->$fk_field)){
 
@@ -219,12 +217,12 @@
 						$compound_field_name = static::$belongs_to."_$field_name" ;
 						$value = isset($this->$compound_field_name) ? $this->$compound_field_name : $this->creation_parameters[$compound_field_name] ;
 						$key_class_fields[$field_name] = $value ;
-						$this->$compound_field_name = $value ; 
 
 					}
 					$key_obj = $key_class::find_or_create($key_class_fields) ;
 					if($key_obj){
 						$fields[$fk_field] = $key_obj->id ; 
+						$this->$property_name = $key_obj ;
 					}
 				}
 
