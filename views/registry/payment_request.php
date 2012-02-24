@@ -1,8 +1,7 @@
-<?php $first_name = explode(' ', $registree->person_name) ; $first_name = $first_name[0] ; ?>
 <div id="confirm">
 
 	<h3>
-		<?php printf(__("Olá %s,"), "<span>$first_name</span>" ) ?>
+		<?php printf(__("Olá %s,"), "<span>".$registree->person->first_name()."</span>" ) ?>
 	</h3>
 
 	<?php if (isset($success) && $success ) : ?>
@@ -78,8 +77,8 @@
 	<hr />
 	<p>
 		<h3>Resumo do seu cadastro</h3>
-		Nome: <?php echo $registree->person_name ?><br/>
-		Email: <?php echo $registree->person_email ?><br/>
+		Nome: <?php echo $registree->person->name ?><br/>
+		Email: <?php echo $registree->person->email ?><br/>
 		Curso: <?php echo $course->post_title ?>
 	</p>
 	
