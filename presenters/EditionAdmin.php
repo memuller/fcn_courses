@@ -51,7 +51,10 @@
 				$verb = $arr[0] ; $registree = new Registree($arr[3]) ;
 				
 				if($verb == 'accept'){
-					$registree->status = 'valid' ; $registree->persist() ;
+					MailerPresenter::success($registree) ;
+					$registree->status = 'valid' ; 
+					$registree->persist() ;
+
 				} else {
 					$registree->status = 'invalid' ; $registree->persist() ;
 				}
