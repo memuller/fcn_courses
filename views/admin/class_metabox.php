@@ -10,3 +10,7 @@
 	<?php echo "Término:" ?>
 	<strong> <input type="text" class="inlineDatePicker" name="end_date" size="8" value="<?php echo $edition->end_date ?>"></strong>
 </div>
+<div id="human_time">
+	<?php echo "Horário" ?>
+	<strong> <input type="text" name="human_time" size="12" value="<?php echo $edition->human_time ?>"></strong>
+</div>
