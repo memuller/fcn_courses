@@ -1,3 +1,4 @@
+#postcustom{display:none!important;}
 .column-registree_status { width: 150px; }
 .column-registree_information { width: 60%; }
 
@@ -6,3 +7,4 @@
 	.box-registree_receipt .inside { background-color: white; margin: 5px 5px 5px 5px ;}
 	.box-registree_receipt .button-primary { float: right ; margin-right: 3px ; }
 	.box-registree_receipt .button-secundary { float: left ; margin-left: 3px ;}
+	#class_info strong{display:block;margin:0;}
