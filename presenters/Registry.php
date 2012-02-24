@@ -9,6 +9,8 @@
 				return self::post();
 			} elseif ('POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) && $_POST['action'] == 'payment_confirmation' ) {
 				return self::post_payment() ;
+			} elseif(isset($_GET['payment_for']) && is_email($_GET['payment_for']) ){
+				return self::payment_request();
 			} else {
 				return self::index() ;
 			} 
@@ -24,6 +26,15 @@
 				return WaitingListPresenter::present() ;	
 			}
 			
+		}
+
+		public static function payment_request(){
+			$course = new Course() ; $class = $course->running_classes() ;
+			if(! empty($class)){ $class = $class[0] ;
+				$registree = Registree::find_or_create(array('person_email' => $_GET['payment_for'], 'class_id' => $class->ID )) ;
+				return self::render_to_string('registry/payment_request', array(
+						'registree' => $registree, 'class' => $class, 'course' => $course)) ;
+			}
 		}
 
 		public static function post(){
