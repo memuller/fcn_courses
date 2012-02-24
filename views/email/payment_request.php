@@ -16,15 +16,17 @@
 		</tr>
 		<tr>
 			<td>
-				<h1 style="color: #0883BE;font-size: 18px;font-weight: normal; margin-bottom: 12px; margin-top: 20px;">Olá %Nome do animal%</h1>
+				<h1 style="color: #0883BE;font-size: 18px;font-weight: normal; margin-bottom: 12px; margin-top: 20px;">
+					<?php printf(__("Olá %s,"), $registree->person->first_name()) ?>
+				</h1>
 				<p style="color:#008000;font-size:12px;line-height:150%;">
-					Você está recebendo esse email porque se inscreveu para o curso <strong>%nome do curso%</strong><br/>
+					Você está recebendo esse email porque se inscreveu para o curso <strong><?php echo $course->post_title ?></strong><br/>
 					Para confirmar sua inscrição, você precisa realizar o pagamento correspondente no prazo de 5 dias; <br/>
 					
 				</p>
 				
 				<p style="color:#333333;font-size:12px;line-height:150%;">
-					Você pode encontrar as instruções para fazê-lo em <a href="http://url">http://url do esquema</a>
+					Você pode encontrar as instruções para fazê-lo em <a href="http://url"><?php echo $registree->payment_url() ?></a>
 				</p>
 				<hr>
 				<p style="color:#333333;font-size:12px;line-height:150%;">
