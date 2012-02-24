@@ -88,12 +88,7 @@
 		<small>
 			*em caso de dúvidas e-mail: faleconosco@fcn.edu.br ou
 			Telefone: (12) 3186 2000
-		</small>
-		<br />
-		<small>
-			*pressione ctrl+p para imprimir esse comprovante.
-		</small>
-		<br>
+		</small> <br>
 		<small>*Para solucionar qualquer dúvida, guarde com você o comprovante de depósito.</small>
 	</p>
 </div>
