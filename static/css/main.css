@@ -76,3 +76,8 @@ div.success{border-color:green;color:green;}
 	#confirm #payment-confirmation a{font-size:11px;}
 	#confirm #payment-confirmation small{font-size:10px; font-style: italic; }
 	#confirm hr{display:block;clear:both;}
+	#confirm_success, #confirm_failure{border-top:1px dotted #cccccc;margin: 10px 0; padding: 10px 0;}
+		#confirm_success h1, #confirm_success h2, #confirm_failure h1{font-size:18px;margin:5px 0;font-weight:normal;}
+		#confirm_success h2{font-size:14px;}
+		#confirm_failure ul{list-style:square;margin-top:10px;}
+			#confirm_failure ul li{margin-left:20px;}

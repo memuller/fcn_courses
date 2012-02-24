@@ -91,4 +91,5 @@
 		</small> <br>
 		<small>*Para solucionar qualquer dúvida, guarde com você o comprovante de depósito.</small>
 	</p>
+	<?php include 'payment_confirmation.php';?>
 </div>
