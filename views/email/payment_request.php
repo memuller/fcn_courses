@@ -19,7 +19,7 @@
 			</p>
 			
 			<p style="color:#333333;font-size:12px;line-height:150%;">
-				Você pode encontrar as instruções para fazê-lo em <a href="http://url"><?php echo $registree->payment_url() ?></a>
+				Você pode encontrar as instruções para fazê-lo em <a href="<?php echo $registree->payment_url() ?>">aqui.</a>
 			</p>
 			<hr>
 			<p style="color:#333333;font-size:12px;line-height:150%;">
