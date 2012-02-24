@@ -16,7 +16,8 @@
 			
 			if($position == 'top'){
 				global $post ; $edition = new Edition($post) ;
-				$reg = $edition->registrees() ;			
+				$reg = $edition->registrees() ;	
+				return CourseAdminPresenter::class_information() ;		
 			}
 
 			if($position == 'bottom'){
