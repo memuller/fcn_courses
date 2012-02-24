@@ -42,6 +42,7 @@
 				$course = new Course ; $class = new Edition($_POST['registree']['class_id']) ; 
 				$registree = Registree::find_or_create($_POST['registree']) ;
 				if($registree->new_record){
+					MailerPresenter::payment_request($registree) ;
 					return self::render_to_string('registry/payment_request', array(
 						'registree' => $registree, 'class' => $class, 'course' => $course, 'success' => true)) ;
 				} else {
