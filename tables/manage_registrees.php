@@ -15,9 +15,7 @@
 		function extra_tablenav($position){
 			
 			if($position == 'top'){
-				global $post ; $edition = new Edition($post) ;
-				$reg = $edition->registrees() ;	
-				return CourseAdminPresenter::class_information() ;		
+
 			}
 
 			if($position == 'bottom'){
@@ -28,7 +26,7 @@
 
 		function get_columns(){
 			return $columns = array(
-				'registree_information' => 'Inscrito',
+				'registree_information' => 'Nome & Endereço',
 				'registree_contact' => 'Contato',
 				'registree_status' => 'Estado'
 			) ;
@@ -55,7 +53,7 @@
 					$text = __('Aguardando Pagamento') ;
 					break;
 				case 'validating':
-					$text = "<a href='#' id='registree_".$registree->id."_show_form' >" .__('Aguardando Aprovação') . "</a>";
+					$text = "<a href='#' class='registree_show_payment_form' id='registree_".$registree->id."_show_payment_form' >" .__('Aguardando Aprovação') . "</a>";
 					$form = EditionAdminPresenter::payment_confirmation_form($registree);
 					break;
 				case 'valid':
@@ -92,9 +90,9 @@
 				$sql .= sprintf(" limit %d, %d", $offset, $per_page) ;
 			}
 
-			$this->set_pagination_args(array(
-				'total_items' => $total_items, 'total_pages' => $total_pages , 'per_page' => $per_page
-			));
+			#$this->set_pagination_args(array(
+			#	'total_items' => $total_items, 'total_pages' => $total_pages , 'per_page' => $per_page
+			#));
 
 			$this->_column_headers = array($this->get_columns(), array(), array()) ;
 			$this->items = $class->registrees();

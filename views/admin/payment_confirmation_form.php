@@ -8,16 +8,3 @@
 	<input type="button" value="Aprovar" class='button-primary registree-payment-button' 
 		<?php html_attributes(array('id' => 'accept_registree_payment_'. $registree->id)) ?> >
 </div>
-
-<script type="text/javascript">
-	jQuery('#registree_<?php echo $registree->id ?>_show_form').colorbox({
-		inline:true, 
-		href:'#registree_<?php echo $registree->id ?>_receipt', close:'', escKey: false,
-		onLoad: function(){
-			jQuery('#registree_<?php echo $registree->id ?>_receipt').show();
-		},
-		onClosed: function(){
-			jQuery('#registree_<?php echo $registree->id ?>_receipt').hide();	
-		}
-	}) ;
-</script>

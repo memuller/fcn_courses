@@ -29,9 +29,6 @@
 			}
 		}
 
-		static function class_information(){
-			return static::render('admin/class_information') ;
-		}
 		static function waiting_list_page(){
 			add_submenu_page('edit.php?post_type=courses', 'Lista de Espera', 'Listas de Espera',  
 				'edit_posts', 'waiting_list', 'FCN\WaitingListPresenter::present' ); 

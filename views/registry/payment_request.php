@@ -43,7 +43,7 @@
 		</li>		
 	</ul>
 	<form <?php html_attributes(array( 'id' => 'payment-confirmation',
-		'action' => '', 'method' => 'post', 'enctype' => 'multipart/form-data', 'accept-charset' => 'utf8')) ?> >
+		'action' => '#confirm_success', 'method' => 'post', 'enctype' => 'multipart/form-data', 'accept-charset' => 'utf8')) ?> >
 		
 		<div id="file-upload">
 			<label for="payment-confirmation[file]">

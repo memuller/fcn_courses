@@ -7,6 +7,7 @@
 		global $plugin_path ;
 		if(!empty($post->post_title) && $post->title != __('Auto Draft')){
 			require_once($plugin_path .'tables/manage_registrees.php') ;
+			static::render('admin/class_information', array('class' => new Edition($post))) ;
 			$table = new ManageRegistrees();
 			$table->prepare_items();
 			$table->display();
@@ -48,8 +49,7 @@
 
 			if(isset($_POST['registree_payment_change'])){
 				$arr = explode('_', $_POST['registree_payment_change']) ;
-				$verb = $arr[0] ; $registree = new Registree($arr[3]) ;
-				
+				$verb = $arr[0] ; $registree = new Registree($arr[3],false) ;
 				if($verb == 'accept'){
 					MailerPresenter::success($registree) ;
 					$registree->status = 'valid' ; 

@@ -1,4 +1,8 @@
-#postcustom{display:none!important;}
+#postcustom{ display: none !important; }
+
+#class-registrees div.tablenav { display: none !important ;}
+#class-info { margin-bottom: 10px ; }
+
 .column-registree_status { width: 150px; }
 .column-registree_information { width: 60%; }
 
@@ -7,4 +11,3 @@
 	.box-registree_receipt .inside { background-color: white; margin: 5px 5px 5px 5px ;}
 	.box-registree_receipt .button-primary { float: right ; margin-right: 3px ; }
 	.box-registree_receipt .button-secundary { float: left ; margin-left: 3px ;}
-	#class_info strong{display:block;margin:0;}

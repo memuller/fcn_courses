@@ -21,7 +21,7 @@
 			$class = $course->running_classes() ;
 			if( ! empty($class)) {
 				$class = $class[0] ;
-				return self::render_to_string('registry/form', array('class' => $class)) ;
+				return self::render_to_string('registry/form', array('class' => $class, 'is_admin' => current_user_can('publish_posts'))) ;
 			} else {
 				return WaitingListPresenter::present() ;	
 			}
@@ -42,6 +42,13 @@
 				$course = new Course ; $class = new Edition($_POST['registree']['class_id']) ; 
 				$registree = Registree::find_or_create($_POST['registree']) ;
 				if($registree->new_record){
+					if(!empty($_POST['registree']['vip']) && current_user_can('publish_posts')){
+						MailerPresenter::success($registree) ;
+						$registree->pays = 0 ;
+						$registree->status = 'valid';
+						$registree->persist();
+						return self::render_to_string('registry/form',array('is_admin' => true, 'class' => $class, 'success' => true)) ;
+					}
 					MailerPresenter::payment_request($registree) ;
 					return self::render_to_string('registry/payment_request', array(
 						'registree' => $registree, 'class' => $class, 'course' => $course, 'success' => true)) ;

@@ -56,7 +56,7 @@
 		}
 
 		function accepts_signups(){
-			return $this->in_time_for_signups() ;
+			return $this->in_time_for_signups() && (int) $this->remaining_spaces() > 0;
 		}
 
 		function in_time_for_signups(){
@@ -66,10 +66,37 @@
 			return (bool)$in_time ; 
 		}
 
-		function registrees(){
+		function confirmed_registrees (){
+			return Registree::all(array('count' => true, 'where' => array( 
+				'class_id' => $this->ID, 'status' => 'valid' )  )) ;
+		}
+
+		function remaining_spaces(){
+			return ((int) $this->signup_spaces) - $this->confirmed_registrees() ;
+		}
+
+		function pending_registrees(){
+			return Registree::all(array('count' => true, 'where' => array( 
+			'class_id' => $this->ID, 'status' => 'pending', 'or status' => 'validating' ))) ;
+		}
+
+		function vips(){
+			return Registree::all(array('count' => true, 'where' => array(
+				'class_id' => $this->ID, 'status' => 'valid', 'pays' => 0 )));
+		}
+
+		function income(){
+			$count = Registree::all(array('count' => true, 'where' => array(
+				'class_id' => $this->ID, 'status' => 'valid', 'pays' => 1 )));
+			return $count * $this->signup_cost ;
+		}
+
+
+		function registrees($args = array()){
 			global $wpdb ; $registrees = array() ;
-			$sql = "select * from " . Registree::table_name() . " registree inner join ". Person::table_name() . " person 
-				on person_id = person.id where class_id = $this->ID" ;
+			$sql = "select registree.*, ". Person::field_list('person') . " from " . Registree::table_name() . " registree inner join ". Person::table_name() . " person 
+				on person_id = person.id where class_id = $this->ID order by status asc" ;
+				
 			foreach ($wpdb->get_results($sql, ARRAY_A) as $registree) {
 				$registrees[]= new Registree($registree, false) ;
 			}

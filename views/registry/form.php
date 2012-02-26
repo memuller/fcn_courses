@@ -5,7 +5,22 @@
 <?php endif ?>
 
 <form action="#confirm" id="registry" method="post">
+	<?php if (isset($is_admin) && $is_admin): ?>
+		<div class="failure">
+			<?php _e("Você está logado como editor. Você pode cadastrar alunos <strong>VIP</strong> (que estarão automaticamente confirmados, e não precisarão pagar)."); ?>
+			<div>
+				<input type="checkbox" name="registree[vip]" value="true">
+				<?php _e("<strong>Sim</strong>, quero cadastrar um usuário VIP.") ?>
+			</div>
+		</div>
+		<?php if (isset($success) && $success): ?>
+			<div class="success">
+				<?php _e('Você cadastrou com sucesso um usuário VIP.') ;?>
+			</div>
+		<?php endif ?>
+	<?php endif ?>
 	<fieldset id="informacoes_pessoais">
+
 		<legend>Informações pessoais</legend>
 		<label for="nome">Nome:</label>
 		<input class="required" id="nome" name="registree[person_name]" type="text" value="">

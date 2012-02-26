@@ -21,6 +21,14 @@
 			return $wpdb->prefix . static::$table_sufix ;
 		}
 
+		static function field_list($prefix=""){
+			$list = array() ;
+			foreach (static::$fields as $field_name => $field_options) {
+				$list[]= ! empty($prefix) ? $prefix.'.'.$field_name : $field_name ;
+			}
+			return implode(', ', $list) ;
+		}
+
 		static function unique_field(){
 
 			if(isset(static::$compound_indexes)){
@@ -256,6 +264,49 @@
 				$this->new_record = false ;
 				$wpdb->update(static::table_name(), $fields, array('id' => $this->id)) ;
 			}
+		}
+
+		static function is_text_field($field){
+			if(! $type = static::$fields[$field]['type']) return true ; 
+			if(in_array($type, array('text', 'enum', 'set', 'datetime'))) return true ;
+			if(stripos($type, 'int')) return false ;
+			
+
+		}
+
+		static function all($args=array()){
+			global $wpdb ; $objects = array() ;
+			
+			if(isset($args['where'])){
+				$where = array() ; $i = 0 ; 
+				foreach ($args['where'] as $param => $value) {
+					if(static::is_text_field($param)) $value = "\"$value\"" ;
+					if(stripos($param, 'or ') === false && $i >= 1){
+						$separator = 'and ' ;
+					} else { $separator = '' ; } $i++ ;
+					$operator = " = " ;
+					$where[]= "$separator $param $operator $value" ; 
+				}
+				$where = 'where ' . implode(' ', $where) ;
+			} else { $where = '' ;}
+
+			if(isset($args['fields'])) {
+				$fields = implode(', ', $args['fields']) ;
+			} else { $fields = '*' ; }
+
+			if(isset($args['count'])) $fields = 'count(id)' ;
+
+			$sql = "select $fields from " . static::table_name() . " $where" ;
+
+			if( ! isset($args['count'])){
+				foreach ($wpdb->get_results($sql, ARRAY_A) as $obj) {
+					$objects[]= new static($obj, false) ;
+				}
+			} else {
+				$objects = $wpdb->get_var($sql) ;
+			}
+			return $objects ; 
+
 		}
 		
 	}
