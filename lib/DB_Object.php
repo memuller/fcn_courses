@@ -238,7 +238,9 @@
 			foreach (static::$fields as $field_name => $field_options) {
 				
 				if(isset($field_options['mechanized'])){
-					$this->creation_parameters[$field_name] =  call_user_func($field_options['mechanized'][0], $field_options['mechanized'][1]);
+					if(!isset($field_options['mechanize_once']) || ! isset($this->id)){
+						$this->creation_parameters[$field_name] =  call_user_func($field_options['mechanized'][0], $field_options['mechanized'][1]);
+					}
 				}
 				$value = isset($this->$field_name) ? $this->$field_name : $this->creation_parameters[$field_name] ; 
 				$value = !isset($value) ? $field_options['default'] : $value ; 
