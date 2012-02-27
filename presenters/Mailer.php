@@ -12,8 +12,12 @@
 			$success = wp_mail($registree->person->email, "FCN: Aguardando Pagamento", $mail) ;
 		}
 
-		function payment_reminder(){
-
+		function payment_reminder($registree){
+			$class = new Edition($registree->class_id) ;
+			$course = new Course($class->course_id) ;
+			$mail = static::render_to_string('email/payment_reminder', array('registree' => $registree, 'course' => $course, 'class' => $class) );
+			add_filter('wp_mail_content_type',create_function('', 'return "text/html";'));
+			$success = wp_mail($registree->person->email, "FCN: Lembrete de Pagamento", $mail) ;
 		}
 
 		function payment_failure(){
