@@ -1,6 +1,7 @@
 <?php 
 	namespace FCN ;
 	use DB_Object ;
+	use DateTime, DateInterval ;
 
 	class Registree extends DB_Object {
 
@@ -29,6 +30,17 @@
 			} else {
 				return $this->payment_receipt ;
 			}
+		}
+
+		function alert_date(){
+			$class = new Edition($this->class_id) ;
+			$signup =  new Datetime($this->signed_up) ;
+			return $signup->add(DateInterval::createFromDateString("$class->pending_signups_expiry_time days")) ;
+		}
+
+		function kill_date(){
+			$class = new Edition($this->class_id) ;
+			return $this->alert_date()->add(DateInterval::createFromDateString("3 days")) ;
 		}
 
 		function payment_url(){

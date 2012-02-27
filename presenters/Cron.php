@@ -1,31 +1,41 @@
 <?php 
 	namespace FCN ; 
 	use Presenter ;
-	
+	use DateTime ;
 	class CronPresenter extends Presenter {
 
-		static function payment_request($registree){
-			$class = new Edition($registree->class_id) ;
-			$course = new Course($class->course_id) ;
-			$mail = static::render_to_string('email/payment_request', array('registree' => $registree, 'course' => $course) );
-			add_filter('wp_mail_content_type',create_function('', 'return "text/html";'));
-			$success = wp_mail($registree->person->email, "FCN: Aguardando Pagamento", $mail) ;
+		static function process_pending_registrees(){
+			foreach (get_posts(array('post_type' => 'classes'), ARRAY_A) as $class) {
+				$class = new Edition($class) ;
+				if( $class->accepts_signups()){
+					$course = new Course($class->post_parent) ;
+					foreach ($class->registrees() as $registree) { 
+						if($registree->status == 'pending'){
+							$now = new DateTime('now') ;
+							
+							if ( $registree->kill_date() <= $now && $registree->alerted_about_payment ){
+								$registree->status = 'invalid' ;
+								$registree->persist() ;
+							}
+
+							if ( $registree->alert_date() <= $now && ! $registree->alerted_about_payment ){
+								$registree->alerted_about_payment = 1;
+								$registree->persist() ;
+								MailerPresenter::payment_reminder($registree) ;
+							}
+						}
+
+					}
+				}
+
+			}
 		}
 
-		function payment_reminder(){
-
-		}
-
-		function payment_failure(){
-
-		}
-
-		static function success($registree){
-			$class = new Edition($registree->class_id) ;
-			$course = new Course($class->course_id) ;
-			$mail = static::render_to_string('email/success', array('registree' => $registree, 'class' => $class, 'course' => $course) );
-			add_filter('wp_mail_content_type',create_function('', 'return "text/html";'));
-			$success = wp_mail($registree->person->email, "FCN: Inscrição confirmada", $mail) ;
+		static function build(){
+			add_action('fcn_process_pending_registrees', 'FCN\CronPresenter::process_pending_registrees') ;
+			if(!wp_next_scheduled('fcn_process_pending_registrees')){
+				wp_schedule_event(time(), 'daily', 'fcn_process_pending_registrees') ;
+			}
 		}
 
 
