@@ -33,6 +33,7 @@
 			'signup_end_date' => array('type' => 'date'),
 			'signup_cost' => array('type' => 'money'),
 			'signup_spaces' => array('type' => 'integer'),
+			'pending_signups_expiry_time' => array('type' => 'integer'),
 			'human_time' => array()
 		) ;
 

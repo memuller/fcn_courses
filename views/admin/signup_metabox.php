@@ -19,6 +19,13 @@
 	</strong>
 </div>
 
+<div id="pending_signups_expiry_time">
+	<?php echo "Inscrições não-pagas expiram em:" ?>
+	<strong>
+		<input type="text" name="pending_signups_expiry_time" size="3" value="<?php echo $edition->pending_signups_expiry_time ?>"> dias
+	</strong>
+</div>
+
 <div id="spaces">
 	<?php echo "Vagas:" ?>
 	<strong>
