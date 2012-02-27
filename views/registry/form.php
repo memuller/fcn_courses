@@ -98,6 +98,7 @@
 		<legend>Endereço</legend>
 		<label for="cep">CEP<small> (ao preencher o restante das informações serão completadas automaticamente) | </small><small><a href="http://www.buscacep.correios.com.br/" target="blank"> Não sei o cep do meu endereço.</a></small></label>
 		<input class="required mask-cep litle" id="endereco_cep" name="registree[person_address_zip]" type="text" value="">
+		<div id="cep_failure" class='failure'> Seu cep não foi encontrado. Se tiver certeza que o digitou corretamente, insira o restante do seu endereço manualmente abaixo. </div>
 			<div id="address_fields">
 				<label for="rua">Rua (Av. etc.):</label>
 				<input class="required" id="endereco_rua" name="registree[person_address_street]" type="text" value="">

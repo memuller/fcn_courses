@@ -23,9 +23,10 @@ jQuery(document).ready( function($) {
 					$('#endereco_estado')[0].value = data.estado ;
 					$('#endereco_cidade')[0].value = data.cidade ;
 					$('#address_fields').show('fast');
+					$('#cep_failure').hide();
 				},
 				error: function(data){
-					$('#endereco').prepend("<div class='failure'> Seu cep não foi encontrado. Se tiver certeza que o digitou corretamente, insira o restante do seu endereço manualmente abaixo. </div>") ;
+					$('#cep_failure').show('fast') ;
 					$('#address_fields').show('fast');
 				} 
 			}) ;
