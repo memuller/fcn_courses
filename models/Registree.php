@@ -9,10 +9,11 @@
 		static $fields = array(
 			'status' => array('required' => true, 'default' => 'pending', 'type' => 'enum', 'values' => array('validating','pending','valid','invalid'), 'index' => true) ,
 			'class_id' => array('required' => true, 'type' => 'bigint(20) unsigned'),
-			'signed_up' => array('required' => true, 'type' => 'datetime', 'mechanized' => array('date', 'Y-m-d H:i:s')),
+			'signed_up' => array('required' => true, 'type' => 'datetime', 'mechanized' => array('date', 'Y-m-d H:i:s'), 'mechanize_once' => true),
 			'paid_up' => array('type' => 'datetime' ),
 			'payment_receipt' => array('type' => 'text') ,
-			'pays' => array('type' => 'tinyint(1)', 'required' => true ,'default' => 1)
+			'pays' => array('type' => 'tinyint(1)', 'required' => true ,'default' => 1),
+			'alerted_about_payment' => array('type' => 'tinyint(1)', 'required' => true, 'default' => 0)
 		) ;
 
 		static $compound_indexes = array(
