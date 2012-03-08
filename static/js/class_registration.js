@@ -14,7 +14,7 @@ jQuery(document).ready( function($) {
 	 * when 8 digits are inserted on CEP field, uses it to fetch other addres fields and shows them.
 	 * * if CEP is invalid or an error happens, inform about it and show fields for manual edition. */
 	$('#endereco_cep').mask('99999-999') ;
-	$('#endereco_cep').on('keyup', function(event){
+	$('#endereco_cep').live('keyup', function(event){
 		if($(this)[0].value.length >= 8){
 			$(this).cep({
 				success: function(data){ 
