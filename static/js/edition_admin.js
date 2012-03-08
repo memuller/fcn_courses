@@ -2,7 +2,7 @@ jQuery(document).ready( function($) {
 	$('.inlineDatePicker').datepick()
 
 	// kills token from wp_list_table ; otherwise publishing classes won't work.
-	$('#publish').live('click', function(event){
+	$('#publish').on('click', function(event){
 		$('#class-registrees #_wpnonce').remove();
 	});
 
@@ -18,7 +18,7 @@ jQuery(document).ready( function($) {
 		}
 	}) ;
 
-	$('.registree-payment-button').live('click', function(event){
+	$('.registree-payment-button').on('click', function(event){
 		$('#post').append("<input type='hidden' id='registree_payment_change' name='registree_payment_change' value='"+this.id+  "' >" ) ;
 		$('#publish').trigger('click');
 	});

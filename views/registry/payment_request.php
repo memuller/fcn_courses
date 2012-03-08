@@ -47,7 +47,7 @@
 		
 		<div id="file-upload">
 			<label for="payment-confirmation[file]">
-				<?php _e("Selecione a imagem contendo o comprovante do dépósito:") ?>
+				<?php _e("Selecione a imagem (jpg, png, gif) contendo o comprovante do dépósito:") ?>
 			</label>
 			<input type="file" name="payment-confirmation[file]">
 
