@@ -44,8 +44,9 @@
 		}
 
 		function payment_url(){
-			$class = new Edition($this->class_id) ; $course = new Course($class->course_id) ;
-			return get_permalink($course->ID) . "?payment_for=".$this->person->email . "#confirm" ;
+			$class = new Edition($this->class_id) ; 
+			$course = new Course(get_post($class->post_parent)) ;
+			return get_permalink($course->post) . "?payment_for=".$this->person->email . "#confirm" ;
 		}
 	}
 

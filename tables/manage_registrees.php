@@ -50,7 +50,8 @@
 
 			switch ($registree->status) {
 				case 'pending':
-					$text = __('Aguardando Pagamento') ;
+					$text = __('Aguardando confirmação') ;
+					$text .= '<br/>' . "<a href='". $registree->payment_url() ."'>Envio manual</a>" ;
 					break;
 				case 'validating':
 					$text = "<a href='#' class='registree_show_payment_form' id='registree_".$registree->id."_show_payment_form' >" .__('Aguardando Aprovação') . "</a>";
