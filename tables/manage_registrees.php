@@ -36,7 +36,12 @@
 			$actions = array(
 				'more_info' => sprintf("<a class='thickbox' href='inlineId=%s'>%s</a>", "registree_".$registree->ID."_additional_info", 'Mais Informações' )  
 			);
-			return  "<div style='font-weight:bold;'>".$registree->person->name."</div>" . $registree->person->address() ;
+			$date = explode(' ',$registree->person->birthdate) ; $date = $date[0];
+			$returnable = "<div style='font-weight:bold;'>".$registree->person->name."</div>" ;
+			$returnable .= "<div>". $registree->person->address() . "</div>" ;
+			$returnable .= "<div> CPF: ". $registree->person->cpf . " | RG: ". $registree->person->rg . " | Nascido em: ".$date;
+			return $returnable ; 
+
 		}
 
 		function column_registree_contact($registree){
