@@ -62,6 +62,7 @@
 					break;
 				case 'invalid':
 					$text = __('Cancelada') ;
+					$text .= "<br/><a href='#' class='registree-reset-status-button' id='registree_".$registree->id."_reset_status' >".__('Re-habilitar')."</a>" ;
 					break;
 			}
 			return "<div class='$registree->status'> $text </div>" . $form ;

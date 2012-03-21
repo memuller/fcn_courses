@@ -105,7 +105,7 @@
 			return $registrees ;
 		}
 
-		function __construct($post=nil){
+		function __construct($post=false){
 			if($post){
 				if(is_numeric($post)) $post = get_post($post) ;
 				$this->post = $post ; 

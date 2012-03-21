@@ -22,4 +22,8 @@ jQuery(document).ready( function($) {
 		$('#post').append("<input type='hidden' id='registree_payment_change' name='registree_payment_change' value='"+this.id+  "' >" ) ;
 		$('#publish').trigger('click');
 	});
+	$('.registree-reset-status-button').live('click', function(event){
+		$('#post').append("<input type='hidden' id='registree_reset_status' name='registree_reset_status' value='"+this.id+  "' >" ) ;
+		$('#publish').trigger('click');
+	});
 });

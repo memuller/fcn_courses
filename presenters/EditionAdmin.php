@@ -5,7 +5,7 @@
 
 	static function registrees_metabox($post){
 		global $plugin_path ;
-		if(!empty($post->post_title) && $post->title != __('Auto Draft')){
+		if(!empty($post->post_title) && $post->post_title != __('Auto Draft')){
 			require_once($plugin_path .'tables/manage_registrees.php') ;
 			static::render('admin/class_information', array('class' => new Edition($post))) ;
 			$table = new ManageRegistrees();
@@ -35,7 +35,7 @@
 
 
 	static function title_pre_save($title){
-		if($_POST['post_type'] == 'classes'){
+		if(isset($_POST['post_type']) && $_POST['post_type'] == 'classes'){
 			$start_date = explode('/', $_POST['start_date']) ;
 			$title =  sprintf("%s/%s", $start_date[1],$start_date[2]) ;
 		} 
@@ -43,9 +43,9 @@
 	}
 
 	static function save($post_id){
-		if( defined(DOING_AUTOSAVE) && DOING_AUTOSAVE) return ;
+		if( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return ;
 		
-		if($_POST['post_type'] == 'classes'){
+		if(isset($_POST['post_type']) && $_POST['post_type'] == 'classes'){
 
 			if(isset($_POST['registree_payment_change'])){
 				$arr = explode('_', $_POST['registree_payment_change']) ;
@@ -58,6 +58,11 @@
 				} else {
 					$registree->status = 'invalid' ; $registree->persist() ;
 				}
+			} elseif (isset($_POST['registree_reset_status'])) {
+				$arr = explode('_', $_POST['registree_reset_status']) ;
+				$registree = new Registree($arr[1], false);
+				$registree->status = 'pending';
+				$registree->persist();
 			}
 
 			$course = get_post($_POST['parent_id']) ;
